@@ -185,8 +185,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Positioned.fill(
             child: Container(
               color: const Color(0xFF5027D0),
-              child: SvgPicture.network(
-                'https://funkyrecursos.s3.us-east-2.amazonaws.com/assets/wallpaper+log-in.svg',
+              child: SvgPicture.asset('assets/wallpaper+log-in.svg',
                 fit: BoxFit.cover,
               ),
             ),
@@ -206,8 +205,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Flexible(
                         flex: 2,
                         child: Center(
-                          child: Image.network(
-                            'https://funkyrecursos.s3.us-east-2.amazonaws.com/assets/logo.png',
+                          child: Image.asset('assets/logo.png',
                             fit: BoxFit.contain,
                           ),
                         ),

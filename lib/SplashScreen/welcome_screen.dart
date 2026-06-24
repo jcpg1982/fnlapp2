@@ -137,8 +137,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
                           SizedBox(height: screenHeight * 0.04),
 
                           // Imagen centrada
-                          Image.network(
-                            'https://funkyrecursos.s3.us-east-2.amazonaws.com/assets/funcy_bienvenida.png',
+                          Image.asset('assets/funcy_bienvenida.png',
                             width: isWeb ? 250 : screenWidth * 0.5,
                             height: isWeb ? 300 : screenHeight * 0.4,
                             fit: BoxFit.contain,
@@ -246,8 +245,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
               left: screenWidth * 0.05,
               child: Transform.rotate(
                 angle: _rotationAnimation.value,
-                child: SvgPicture.network(
-                  'https://funkyrecursos.s3.us-east-2.amazonaws.com/assets/nube.svg',
+                child: SvgPicture.asset('assets/nube.svg',
                   width: 150,
                   height: 100,
                 ),
@@ -263,8 +261,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
               right: screenWidth * 0.05,
               child: Transform.rotate(
                 angle: -_rotationAnimation.value,
-                child: SvgPicture.network(
-                  'https://funkyrecursos.s3.us-east-2.amazonaws.com/assets/nube.svg',
+                child: SvgPicture.asset('assets/nube.svg',
                   width: 130,
                   height: 90,
                 ),
@@ -285,8 +282,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
             left: -screenWidth * 0.08,
             child: Transform.rotate(
               angle: _rotationAnimation.value,
-              child: SvgPicture.network(
-                'https://funkyrecursos.s3.us-east-2.amazonaws.com/assets/nube.svg',
+              child: SvgPicture.asset('assets/nube.svg',
                 width: screenWidth * 0.5,
                 height: screenHeight * 0.15,
               ),
@@ -302,8 +298,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
             right: -screenWidth * 0.1,
             child: Transform.rotate(
               angle: -_rotationAnimation.value,
-              child: SvgPicture.network(
-                'https://funkyrecursos.s3.us-east-2.amazonaws.com/assets/nube.svg',
+              child: SvgPicture.asset('assets/nube.svg',
                 width: screenWidth * 0.45,
                 height: screenHeight * 0.13,
               ),
@@ -319,8 +314,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
             left: -screenWidth * 0.001,
             child: Opacity(
               opacity: 0.8 + (_floatingAnimation.value / 100),
-              child: SvgPicture.network(
-                'https://funkyrecursos.s3.us-east-2.amazonaws.com/assets/rectangulo.svg',
+              child: SvgPicture.asset('assets/rectangulo.svg',
                 width: screenWidth * 1,
                 height: screenHeight * 0.30,
               ),
@@ -336,8 +330,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
             right: -screenWidth * 0.12,
             child: Transform.rotate(
               angle: _rotationAnimation.value * 2,
-              child: SvgPicture.network(
-                'https://funkyrecursos.s3.us-east-2.amazonaws.com/assets/estrella.svg',
+              child: SvgPicture.asset('assets/estrella.svg',
                 width: screenWidth * 1,
                 height: screenWidth * 0.4,
               ),
@@ -348,3 +341,4 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
     ];
   }
 }
+
