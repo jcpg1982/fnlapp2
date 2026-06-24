@@ -273,104 +273,150 @@ class _RegisterScreenState extends State<RegisterScreen> {
               Positioned.fill(
                 child: Container(
                   color: const Color(0xFF5027D0),
-                  child: SvgPicture.network(
-                    'https://funkyrecursos.s3.us-east-2.amazonaws.com/assets/wallpaper+log-in.svg',
+                  child: SvgPicture.asset(
+                    'assets/wallpaper+log-in.svg',
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
 
-              // Logo en la parte superior
+              // Contenido sobrepuesto
               SafeArea(
-                child: Align(
-                  alignment: Alignment.topCenter,
-                  child: Padding(
-                    padding: EdgeInsets.only(top: verticalSpacing * 2),
-                    child: SizedBox(
-                      height: logoHeight,
-                      child: Image.network(
-                        'https://funkyrecursos.s3.us-east-2.amazonaws.com/assets/logo.png',
-                        fit: BoxFit.contain,
+                child: SizedBox(
+                  height: constraints.maxHeight,
+                  width: constraints.maxWidth,
+                  child: Column(
+                    children: [
+                      // Espacio superior para el logo (flexible)
+                      Flexible(
+                        flex: 2,
+                        child: Center(
+                          child: Image.asset(
+                            'assets/logo.png',
+                            fit: BoxFit.contain,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
-              ),
 
-              // Contenedor blanco anclado en la parte inferior
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: SafeArea(
-                  top: false,
-                  child: Container(
-                    width: containerWidth,
-                    constraints: BoxConstraints(
-                      maxHeight: constraints.maxHeight * 0.75,
-                    ),
-                    margin: EdgeInsets.symmetric(horizontal: isMobile ? 0 : 16),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.1),
-                          blurRadius: 10,
-                          offset: const Offset(0, -2),
-                        ),
-                      ],
-                    ),
-                    child: SingleChildScrollView(
-                      physics: const BouncingScrollPhysics(),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: horizontalPadding,
-                          vertical: verticalSpacing * 1.5,
-                        ),
-                        child: Form(
-                          key: _formKey,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              // Título de registro
-                              Center(
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      'Registrarse',
-                                      style: TextStyle(
-                                        color: const Color(0xFF020107),
-                                        fontSize: titleSize,
-                                        fontFamily: 'Inter',
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 4),
-                                    Text(
-                                      'Es rápido y fácil',
-                                      style: TextStyle(
-                                        color: const Color(0xFF020107),
-                                        fontSize: subtitleSize,
-                                        fontFamily: 'Roboto',
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                      // Contenedor blanco anclado en la parte inferior
+                      Flexible(
+                        flex:
+                            7, // Mayor proporción para el formulario de registro
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            width: containerWidth,
+                            margin: EdgeInsets.symmetric(
+                                horizontal: isMobile ? 0 : 16),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(30),
+                                topRight: Radius.circular(30),
                               ),
-                              SizedBox(height: verticalSpacing * 1.5),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withValues(alpha: 0.1),
+                                  blurRadius: 10,
+                                  offset: const Offset(0, -2),
+                                ),
+                              ],
+                            ),
+                            child: SingleChildScrollView(
+                              physics: const BouncingScrollPhysics(),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: horizontalPadding,
+                                  vertical: verticalSpacing * 1.5,
+                                ),
+                                child: Form(
+                                  key: _formKey,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      // Título de registro
+                                      Center(
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              'Registrarse',
+                                              style: TextStyle(
+                                                color: const Color(0xFF020107),
+                                                fontSize: titleSize,
+                                                fontFamily: 'Inter',
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                            ),
+                                            const SizedBox(height: 4),
+                                            Text(
+                                              'Es rápido y fácil',
+                                              style: TextStyle(
+                                                color: const Color(0xFF020107),
+                                                fontSize: subtitleSize,
+                                                fontFamily: 'Roboto',
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(height: verticalSpacing * 1.5),
 
-                              // Campos de formulario con layout adaptativo
-                              if (isWeb || isTablet) ...[
-                                // Layout en dos columnas para web/tablet
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: _buildFieldColumn([
+                                      // Campos de formulario con layout adaptativo
+                                      if (isWeb || isTablet) ...[
+                                        // Layout en dos columnas para web/tablet
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Expanded(
+                                              child: _buildFieldColumn([
+                                                _buildLabeledField(
+                                                    'Usuario',
+                                                    'Nombre de usuario',
+                                                    usernameController,
+                                                    labelSize,
+                                                    fieldSpacing),
+                                                _buildLabeledField(
+                                                    'Nombre',
+                                                    'Nombre completo',
+                                                    namesController,
+                                                    labelSize,
+                                                    fieldSpacing),
+                                                _buildLabeledField(
+                                                    'Correo',
+                                                    'Tu correo',
+                                                    emailController,
+                                                    labelSize,
+                                                    fieldSpacing,
+                                                    keyboardType: TextInputType
+                                                        .emailAddress),
+                                              ]),
+                                            ),
+                                            SizedBox(width: fieldSpacing * 2),
+                                            Expanded(
+                                              child: _buildFieldColumn([
+                                                _buildLabeledField(
+                                                    'Apellidos',
+                                                    'Apellidos',
+                                                    lastnamesController,
+                                                    labelSize,
+                                                    fieldSpacing),
+                                                _buildLabeledField(
+                                                    'Contraseña',
+                                                    'Nueva contraseña',
+                                                    passwordController,
+                                                    labelSize,
+                                                    fieldSpacing,
+                                                    obscureText: true),
+                                              ]),
+                                            ),
+                                          ],
+                                        ),
+                                      ] else ...[
+                                        // Layout vertical para móvil
                                         _buildLabeledField(
                                             'Usuario',
                                             'Nombre de usuario',
@@ -384,6 +430,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                             labelSize,
                                             fieldSpacing),
                                         _buildLabeledField(
+                                            'Apellidos',
+                                            'Apellidos',
+                                            lastnamesController,
+                                            labelSize,
+                                            fieldSpacing),
+                                        _buildLabeledField(
                                             'Correo',
                                             'Tu correo',
                                             emailController,
@@ -391,17 +443,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                             fieldSpacing,
                                             keyboardType:
                                                 TextInputType.emailAddress),
-                                      ]),
-                                    ),
-                                    SizedBox(width: fieldSpacing * 2),
-                                    Expanded(
-                                      child: _buildFieldColumn([
-                                        _buildLabeledField(
-                                            'Apellidos',
-                                            'Apellidos',
-                                            lastnamesController,
-                                            labelSize,
-                                            fieldSpacing),
                                         _buildLabeledField(
                                             'Contraseña',
                                             'Nueva contraseña',
@@ -409,107 +450,89 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                             labelSize,
                                             fieldSpacing,
                                             obscureText: true),
-                                      ]),
-                                    ),
-                                  ],
-                                ),
-                              ] else ...[
-                                // Layout vertical para móvil
-                                _buildLabeledField(
-                                    'Usuario',
-                                    'Nombre de usuario',
-                                    usernameController,
-                                    labelSize,
-                                    fieldSpacing),
-                                _buildLabeledField('Nombre', 'Nombre completo',
-                                    namesController, labelSize, fieldSpacing),
-                                _buildLabeledField(
-                                    'Apellidos',
-                                    'Apellidos',
-                                    lastnamesController,
-                                    labelSize,
-                                    fieldSpacing),
-                                _buildLabeledField('Correo', 'Tu correo',
-                                    emailController, labelSize, fieldSpacing,
-                                    keyboardType: TextInputType.emailAddress),
-                                _buildLabeledField(
-                                    'Contraseña',
-                                    'Nueva contraseña',
-                                    passwordController,
-                                    labelSize,
-                                    fieldSpacing,
-                                    obscureText: true),
-                              ],
-
-                              SizedBox(height: verticalSpacing * 1.5),
-
-                              // Botón de Registro
-                              isLoading
-                                  ? const Center(child: CircularProgressIndicator())
-                                  : SizedBox(
-                                      width: double.infinity,
-                                      child: ElevatedButton(
-                                        onPressed: () => _register(context),
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor:
-                                              const Color(0xFF6D4BD8),
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: isWeb ? 16 : 12),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(40),
-                                          ),
-                                          elevation: 6,
-                                          shadowColor: const Color(0x26000000),
-                                        ),
-                                        child: Text(
-                                          'Crear cuenta',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: buttonTextSize,
-                                            fontFamily: 'Inter',
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                              SizedBox(height: verticalSpacing),
-
-                              // Enlace para ir a login
-                              Center(
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Navigator.pushReplacementNamed(
-                                        context, '/login');
-                                  },
-                                  child: RichText(
-                                    text: TextSpan(
-                                      style: TextStyle(
-                                        color: const Color(0xFF333333),
-                                        fontSize: labelSize,
-                                        fontFamily: 'Inter',
-                                      ),
-                                      children: const [
-                                        TextSpan(text: '¿Ya tienes cuenta? '),
-                                        TextSpan(
-                                          text: 'Inicia sesión',
-                                          style: TextStyle(
-                                            color: Color(0xFF290B47),
-                                            fontWeight: FontWeight.w600,
-                                            decoration:
-                                                TextDecoration.underline,
-                                          ),
-                                        ),
                                       ],
-                                    ),
+
+                                      SizedBox(height: verticalSpacing * 1.5),
+
+                                      // Botón de Registro
+                                      isLoading
+                                          ? const Center(
+                                              child:
+                                                  CircularProgressIndicator())
+                                          : SizedBox(
+                                              width: double.infinity,
+                                              child: ElevatedButton(
+                                                onPressed: () =>
+                                                    _register(context),
+                                                style: ElevatedButton.styleFrom(
+                                                  backgroundColor:
+                                                      const Color(0xFF6D4BD8),
+                                                  padding: EdgeInsets.symmetric(
+                                                      vertical:
+                                                          isWeb ? 16 : 12),
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            40),
+                                                  ),
+                                                  elevation: 6,
+                                                  shadowColor:
+                                                      const Color(0x26000000),
+                                                ),
+                                                child: Text(
+                                                  'Crear cuenta',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: buttonTextSize,
+                                                    fontFamily: 'Inter',
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                      SizedBox(height: verticalSpacing),
+
+                                      // Enlace para ir a login
+                                      Center(
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            Navigator.pushReplacementNamed(
+                                                context, '/login');
+                                          },
+                                          child: RichText(
+                                            text: TextSpan(
+                                              style: TextStyle(
+                                                color: const Color(0xFF333333),
+                                                fontSize: labelSize,
+                                                fontFamily: 'Inter',
+                                              ),
+                                              children: const [
+                                                TextSpan(
+                                                    text:
+                                                        '¿Ya tienes cuenta? '),
+                                                TextSpan(
+                                                  text: 'Inicia sesión',
+                                                  style: TextStyle(
+                                                    color: Color(0xFF290B47),
+                                                    fontWeight: FontWeight.w600,
+                                                    decoration: TextDecoration
+                                                        .underline,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
-                            ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
               ),

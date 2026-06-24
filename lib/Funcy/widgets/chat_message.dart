@@ -82,7 +82,9 @@ class _ChatMessageState extends State<ChatMessage> {
           style: const TextStyle(color: Colors.blue, decoration: TextDecoration.underline),
           recognizer: TapGestureRecognizer()
             ..onTap = () async {
+// ignore: deprecated_member_use
               if (await canLaunch(url)) {
+// ignore: deprecated_member_use
                 await launch(url);
               }
             },

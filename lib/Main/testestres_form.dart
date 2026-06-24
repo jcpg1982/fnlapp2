@@ -740,12 +740,14 @@ class _TestEstresQuestionScreenState extends State<TestEstresQuestionScreen> {
     final question = questions[currentQuestionIndex];
 
     // Obtener el ancho de la pantalla
+// ignore: unused_local_variable
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: LayoutBuilder(
         builder: (context, constraints) {
           final screenWidth = constraints.maxWidth;
+// ignore: unused_local_variable
           final screenHeight = constraints.maxHeight;
           final isTablet = screenWidth > 600;
 

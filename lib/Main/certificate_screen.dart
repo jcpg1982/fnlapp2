@@ -604,6 +604,7 @@ class _CertificateScreenState extends State<CertificateScreen>
     final isDesktop = screenWidth > 1024;
     final isMediumTablet = screenWidth > 768 && screenWidth <= 1024;
     final isSmallTablet = screenWidth > 600 && screenWidth <= 768;
+// ignore: unused_local_variable
     final isMobile = screenWidth <= 600;
 
     // Tamaños responsivos mejorados (tablets más grandes)
@@ -738,6 +739,7 @@ class _CertificateScreenState extends State<CertificateScreen>
     final isDesktop = screenWidth > 1024;
     final isMediumTablet = screenWidth > 768 && screenWidth <= 1024;
     final isSmallTablet = screenWidth > 600 && screenWidth <= 768;
+// ignore: unused_local_variable
     final isMobile = screenWidth <= 600;
 
     // Tamaños responsivos mejorados para tablets

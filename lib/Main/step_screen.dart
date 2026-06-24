@@ -18,6 +18,7 @@ class StepScreen extends StatefulWidget {
   final int dia;
   final int userId;
   final int tecnicaId;
+// ignore: non_constant_identifier_names
   final String url_img;
   final int sessionId;
 
@@ -29,6 +30,7 @@ class StepScreen extends StatefulWidget {
     required this.dia,
     required this.userId,
     required this.tecnicaId,
+// ignore: non_constant_identifier_names
     required this.url_img,
     required this.sessionId,
   });
@@ -51,6 +53,7 @@ class _StepScreenState extends State<StepScreen> {
   bool _isInDelay = false;
   int _remainingSeconds = 10;
   final Map<int, AudioSource> _cachedAudioSources = {};
+// ignore: unused_field
   bool _isPreloadingAudio = true;
 
   // Helper method para obtener el tipo de dispositivo

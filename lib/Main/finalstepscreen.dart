@@ -31,7 +31,9 @@ class _FinalStepScreenState extends State<FinalStepScreen>
   String _feedbackMessage = '';
 
   // Colores del tema
+// ignore: unused_field
   static const Color _primaryColor = Color(0xFF4B158D);
+// ignore: unused_field
   static const Color _backgroundOverlay = Color(0xFF2D0A4E);
   static const Color _textColor = Color(0xFFF6F6F6);
   static const Color _starColor = Color(0xFFF1D93E);

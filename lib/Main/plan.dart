@@ -181,6 +181,7 @@ class _PlanScreenState extends State<PlanScreen> {
       builder: (BuildContext context) {
         final screenSize = MediaQuery.of(context).size;
         final isTablet = screenSize.width > 600;
+// ignore: unused_local_variable
         final isMobile = screenSize.width <= 600;
 
         // Configuración responsive
@@ -190,6 +191,7 @@ class _PlanScreenState extends State<PlanScreen> {
 
         final maxWidth = isTablet ? 500.0 : 350.0;
         final padding = isTablet ? 32.0 : 24.0;
+// ignore: unused_local_variable
         final iconSize = isTablet ? 56.0 : 48.0;
         final titleFontSize = isTablet ? 28.0 : 24.0;
         final bodyFontSize = isTablet ? 18.0 : 16.0;

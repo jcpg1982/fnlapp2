@@ -43,6 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   // --- FUNCIÓN CORREGIDA ---
   // Esta versión es más robusta y maneja diferentes tipos de números.
+// ignore: unused_element
   bool _isTokenValid(String token) {
     try {
       final jwt = JWT.decode(token);

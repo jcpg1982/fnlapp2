@@ -60,6 +60,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
   }
 
   bool _isWeb(double width) => width > 900;
+// ignore: unused_element
   bool _isTablet(double width) => width > 600 && width <= 900;
 
   @override

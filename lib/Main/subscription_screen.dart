@@ -87,6 +87,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
   }
 
   void _listenToPurchaseUpdated(List<PurchaseDetails> purchaseDetailsList) {
+// ignore: avoid_function_literals_in_foreach_calls
     purchaseDetailsList.forEach((PurchaseDetails purchaseDetails) async {
       print("🔥🔥🔥 PURCHASE DETECTED 🔥🔥🔥");
       print("Product ID: ${purchaseDetails.productID}");

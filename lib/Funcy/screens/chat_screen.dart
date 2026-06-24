@@ -1,8 +1,8 @@
-import 'dart:io';
+// import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:flutter/foundation.dart' show kIsWeb;
+// import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:intl/intl.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -32,6 +32,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final int _limit = 20;
   int _offset = 0;
   bool _loadingMore = false;
+// ignore: unused_field
   dynamic _webSocket;
   bool _isConnected = false;
   bool _botIsTyping = false;
@@ -314,6 +315,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   children: [
                     Expanded(
                       child: ListView.builder(
+// ignore: deprecated_member_use
                         cacheExtent: 1000.0, controller: _scrollController,
                         reverse: true,
                         itemCount: messages.length + (_botIsTyping ? 1 : 0),
