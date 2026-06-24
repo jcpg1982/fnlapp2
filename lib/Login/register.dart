@@ -7,6 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../Util/token_service.dart';
 
 class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
+
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
 }
@@ -32,8 +34,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   Future<void> _register(BuildContext context) async {
-    if (_formKey.currentState == null || !_formKey.currentState!.validate())
+    if (_formKey.currentState == null || !_formKey.currentState!.validate()) {
       return;
+    }
 
     final username = usernameController.text.trim();
     final names = namesController.text.trim();
@@ -108,7 +111,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         _showSnackBar(
             context, 'Registro exitoso. Por favor inicia sesión manualmente.',
             isSuccess: true);
-        Future.delayed(Duration(seconds: 1), () {
+        Future.delayed(const Duration(seconds: 1), () {
           Navigator.pushReplacementNamed(context, '/login');
         });
       }
@@ -117,7 +120,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       _showSnackBar(
           context, 'Registro exitoso. Por favor inicia sesión manualmente.',
           isSuccess: true);
-      Future.delayed(Duration(seconds: 1), () {
+      Future.delayed(const Duration(seconds: 1), () {
         Navigator.pushReplacementNamed(context, '/login');
       });
     }
@@ -269,7 +272,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               // Fondo de pantalla completo
               Positioned.fill(
                 child: Container(
-                  color: Color(0xFF5027D0),
+                  color: const Color(0xFF5027D0),
                   child: SvgPicture.network(
                     'https://funkyrecursos.s3.us-east-2.amazonaws.com/assets/wallpaper+log-in.svg',
                     fit: BoxFit.cover,
@@ -283,7 +286,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   alignment: Alignment.topCenter,
                   child: Padding(
                     padding: EdgeInsets.only(top: verticalSpacing * 2),
-                    child: Container(
+                    child: SizedBox(
                       height: logoHeight,
                       child: Image.network(
                         'https://funkyrecursos.s3.us-east-2.amazonaws.com/assets/logo.png',
@@ -307,20 +310,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     margin: EdgeInsets.symmetric(horizontal: isMobile ? 0 : 16),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30),
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
+                          color: Colors.black.withValues(alpha: 0.1),
                           blurRadius: 10,
-                          offset: Offset(0, -2),
+                          offset: const Offset(0, -2),
                         ),
                       ],
                     ),
                     child: SingleChildScrollView(
-                      physics: BouncingScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: horizontalPadding,
@@ -345,7 +348,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         fontWeight: FontWeight.w700,
                                       ),
                                     ),
-                                    SizedBox(height: 4),
+                                    const SizedBox(height: 4),
                                     Text(
                                       'Es rápido y fácil',
                                       style: TextStyle(
@@ -442,7 +445,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                               // Botón de Registro
                               isLoading
-                                  ? Center(child: CircularProgressIndicator())
+                                  ? const Center(child: CircularProgressIndicator())
                                   : SizedBox(
                                       width: double.infinity,
                                       child: ElevatedButton(
@@ -457,7 +460,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                 BorderRadius.circular(40),
                                           ),
                                           elevation: 6,
-                                          shadowColor: Color(0x26000000),
+                                          shadowColor: const Color(0x26000000),
                                         ),
                                         child: Text(
                                           'Crear cuenta',
@@ -486,12 +489,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         fontSize: labelSize,
                                         fontFamily: 'Inter',
                                       ),
-                                      children: [
+                                      children: const [
                                         TextSpan(text: '¿Ya tienes cuenta? '),
                                         TextSpan(
                                           text: 'Inicia sesión',
                                           style: TextStyle(
-                                            color: const Color(0xFF290B47),
+                                            color: Color(0xFF290B47),
                                             fontWeight: FontWeight.w600,
                                             decoration:
                                                 TextDecoration.underline,
@@ -545,7 +548,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             fontWeight: FontWeight.w500,
           ),
         ),
-        SizedBox(height: 4),
+        const SizedBox(height: 4),
         _buildTextField(hint, controller,
             obscureText: obscureText, keyboardType: keyboardType),
         SizedBox(height: spacing),
@@ -557,12 +560,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
       {bool obscureText = false,
       TextInputType keyboardType = TextInputType.text}) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
+      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.85),
+        color: Colors.white.withValues(alpha: 0.85),
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: Color(0xFF7F7F7F),
+          color: const Color(0xFF7F7F7F),
           width: 1.0,
         ),
       ),
@@ -572,12 +575,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
           return TextFormField(
             controller: controller,
             keyboardType: keyboardType,
-            style: TextStyle(fontSize: 14),
+            style: const TextStyle(fontSize: 14),
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: hintText,
-              hintStyle: TextStyle(fontSize: 14),
-              contentPadding: EdgeInsets.symmetric(vertical: 8),
+              hintStyle: const TextStyle(fontSize: 14),
+              contentPadding: const EdgeInsets.symmetric(vertical: 8),
               isDense: true,
               suffixIcon: obscureText
                   ? ValueListenableBuilder<bool>(
@@ -591,7 +594,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           onPressed: () => passwordVisible.value = !value,
                           padding: EdgeInsets.zero,
-                          constraints: BoxConstraints(),
+                          constraints: const BoxConstraints(),
                         );
                       },
                     )

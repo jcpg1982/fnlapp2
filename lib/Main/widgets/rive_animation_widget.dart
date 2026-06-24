@@ -4,7 +4,7 @@ import 'package:rive/rive.dart';
 class RiveAnimationWidget extends StatelessWidget {
   final VoidCallback onAnimationComplete;
 
-  const RiveAnimationWidget({required this.onAnimationComplete});
+  const RiveAnimationWidget({super.key, required this.onAnimationComplete});
 
   @override
   Widget build(BuildContext context) {

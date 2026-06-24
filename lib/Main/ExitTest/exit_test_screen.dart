@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:fnlapp/SharedPreferences/sharedpreference.dart';
-import 'package:fnlapp/Main/cargarprograma.dart';
 import 'package:fnlapp/config.dart';
 import 'package:fnlapp/Main/certificate_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ExitTestScreen extends StatefulWidget {
-  const ExitTestScreen({Key? key}) : super(key: key);
+  const ExitTestScreen({super.key});
 
   @override
   _ExitTestScreenState createState() => _ExitTestScreenState();
@@ -721,7 +720,7 @@ class _ExitTestScreenState extends State<ExitTestScreen> {
     if (userId == null) {
       print("Error: userId es null");
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: No se ha cargado el ID del usuario')),
+        const SnackBar(content: Text('Error: No se ha cargado el ID del usuario')),
       );
       return;
     }
@@ -730,7 +729,7 @@ class _ExitTestScreenState extends State<ExitTestScreen> {
     if (selectedOptions.where((option) => option != null).length < 23) {
       print("Error: No se han respondido todas las preguntas.");
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Por favor responde todas las preguntas')),
+        const SnackBar(content: Text('Por favor responde todas las preguntas')),
       );
       return;
     }
@@ -739,7 +738,7 @@ class _ExitTestScreenState extends State<ExitTestScreen> {
     if (token == null) {
       print('Error: No se encontró el token.');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: Token no disponible')),
+        const SnackBar(content: Text('Error: Token no disponible')),
       );
       return;
     }
@@ -794,7 +793,7 @@ class _ExitTestScreenState extends State<ExitTestScreen> {
       if (saveResponse.statusCode != 201) {
         print('Error al guardar el test: ${saveResponse.body}');
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error al guardar el test')),
+          const SnackBar(content: Text('Error al guardar el test')),
         );
         return;
       }
@@ -851,7 +850,7 @@ class _ExitTestScreenState extends State<ExitTestScreen> {
     } catch (e) {
       print('Error al procesar el test: $e');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error al procesar el test')),
+        const SnackBar(content: Text('Error al procesar el test')),
       );
     }
   }
@@ -867,25 +866,25 @@ class _ExitTestScreenState extends State<ExitTestScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 60),
+              const SizedBox(height: 60),
               Text(
                 question['question'] ?? '',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               Text(
                 question['description'] ?? '',
-                style: TextStyle(fontSize: 16, color: Colors.black54),
+                style: const TextStyle(fontSize: 16, color: Colors.black54),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               if (question['image'] != null && question['image']!.isNotEmpty)
                 Image.asset(
                   question['image'] ?? '',
                   height: 120,
                 ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -893,7 +892,7 @@ class _ExitTestScreenState extends State<ExitTestScreen> {
                     GestureDetector(
                       onTap: () => selectOption(i),
                       child: AnimatedContainer(
-                        duration: Duration(milliseconds: 300),
+                        duration: const Duration(milliseconds: 300),
                         width: MediaQuery.of(context).size.width * 0.9,
                         margin: const EdgeInsets.symmetric(vertical: 10),
                         padding: const EdgeInsets.all(14),
@@ -921,7 +920,7 @@ class _ExitTestScreenState extends State<ExitTestScreen> {
                                 padding: const EdgeInsets.only(top: 10),
                                 child: Text(
                                   question['detail$i'] ?? '',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 12, color: Colors.white70),
                                 ),
                               ),
@@ -931,11 +930,11 @@ class _ExitTestScreenState extends State<ExitTestScreen> {
                     ),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               if (currentQuestionIndex > 0)
                 TextButton(
                   onPressed: goToPreviousQuestion,
-                  child: Text(
+                  child: const Text(
                     'Volver',
                     style: TextStyle(
                         color: Colors.deepPurple,
@@ -943,7 +942,7 @@ class _ExitTestScreenState extends State<ExitTestScreen> {
                         fontSize: 16),
                   ),
                 ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               ElevatedButton(
                 onPressed: selectedOption != null
                     ? (currentQuestionIndex == questions.length - 1
@@ -952,20 +951,20 @@ class _ExitTestScreenState extends State<ExitTestScreen> {
                     : null,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: selectedOption != null
-                      ? Color.fromARGB(255, 75, 29, 154)
+                      ? const Color.fromARGB(255, 75, 29, 154)
                       : Colors.grey,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30)),
-                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
                 ),
                 child: Text(
                   currentQuestionIndex == questions.length - 1
                       ? 'Finalizar'
                       : 'Siguiente',
-                  style: TextStyle(fontSize: 16, color: Colors.white),
+                  style: const TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
             ],
           ),
         ),

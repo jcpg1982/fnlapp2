@@ -22,7 +22,7 @@ class StepScreen extends StatefulWidget {
   final int sessionId;
 
   const StepScreen({
-    Key? key,
+    super.key,
     required this.steps,
     required this.tecnicaNombre,
     required this.tecnicaTipo,
@@ -31,7 +31,7 @@ class StepScreen extends StatefulWidget {
     required this.tecnicaId,
     required this.url_img,
     required this.sessionId,
-  }) : super(key: key);
+  });
 
   @override
   State<StepScreen> createState() => _StepScreenState();
@@ -50,7 +50,7 @@ class _StepScreenState extends State<StepScreen> {
   Timer? _delayTimer;
   bool _isInDelay = false;
   int _remainingSeconds = 10;
-  Map<int, AudioSource> _cachedAudioSources = {};
+  final Map<int, AudioSource> _cachedAudioSources = {};
   bool _isPreloadingAudio = true;
 
   // Helper method para obtener el tipo de dispositivo
@@ -454,7 +454,7 @@ class _StepScreenState extends State<StepScreen> {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => CompletedDiaScreen(),
+                builder: (context) => const CompletedDiaScreen(),
               ),
             );
           } else {
@@ -623,7 +623,7 @@ class _StepScreenState extends State<StepScreen> {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -631,7 +631,7 @@ class _StepScreenState extends State<StepScreen> {
       ),
       child: Row(
         children: [
-          Container(
+          SizedBox(
             width: dimensions.iconSize + 8,
             height: dimensions.iconSize + 8,
             child: IconButton(
@@ -683,7 +683,7 @@ class _StepScreenState extends State<StepScreen> {
                           size: dimensions.fontSize,
                           color: const Color(0xFF212121),
                         ),
-                        SizedBox(width: 4),
+                        const SizedBox(width: 4),
                         Text(
                           '10 min',
                           style: TextStyle(
@@ -693,7 +693,7 @@ class _StepScreenState extends State<StepScreen> {
                             fontWeight: FontWeight.w400,
                           ),
                         ),
-                        SizedBox(width: 8),
+                        const SizedBox(width: 8),
                         Container(
                           width: 7,
                           height: 7,
@@ -702,7 +702,7 @@ class _StepScreenState extends State<StepScreen> {
                             shape: OvalBorder(),
                           ),
                         ),
-                        SizedBox(width: 8),
+                        const SizedBox(width: 8),
                         Flexible(
                           child: Text(
                             traducirTipoTecnica(widget.tecnicaTipo),
@@ -716,7 +716,7 @@ class _StepScreenState extends State<StepScreen> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
                     Text(
                       widget.tecnicaNombre,
                       style: TextStyle(
@@ -730,13 +730,13 @@ class _StepScreenState extends State<StepScreen> {
                 ),
               ),
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0x28000000),
+                      color: Color(0x28000000),
                       blurRadius: 5,
-                      offset: const Offset(0, 4),
+                      offset: Offset(0, 4),
                       spreadRadius: 0,
                     ),
                   ],
@@ -775,7 +775,7 @@ class _StepScreenState extends State<StepScreen> {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),
@@ -844,7 +844,7 @@ class _StepScreenState extends State<StepScreen> {
             ),
           ),
         ),
-        SizedBox(height: 12),
+        const SizedBox(height: 12),
         Row(
           children: [
             GestureDetector(
@@ -855,7 +855,7 @@ class _StepScreenState extends State<StepScreen> {
                   }
                 });
               },
-              child: Container(
+              child: SizedBox(
                 width: dimensions.iconSize + 8,
                 height: dimensions.iconSize + 8,
                 child: Icon(
@@ -865,11 +865,11 @@ class _StepScreenState extends State<StepScreen> {
                 ),
               ),
             ),
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
             Expanded(
               child: LayoutBuilder(
                 builder: (context, constraints) {
-                  return Container(
+                  return SizedBox(
                     height: 8,
                     child: Stack(
                       children: [
@@ -925,7 +925,7 @@ class _StepScreenState extends State<StepScreen> {
                 },
               ),
             ),
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
             GestureDetector(
               onTap: () {
                 setState(() {
@@ -934,7 +934,7 @@ class _StepScreenState extends State<StepScreen> {
                   }
                 });
               },
-              child: Container(
+              child: SizedBox(
                 width: dimensions.iconSize + 8,
                 height: dimensions.iconSize + 8,
                 child: Icon(

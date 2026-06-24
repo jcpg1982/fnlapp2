@@ -8,7 +8,6 @@ import 'package:fnlapp/config.dart';
 import 'package:fnlapp/Main/home.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:cross_file/cross_file.dart';
 import 'utils/pdf_download.dart';
 
 /// Pantalla de certificado que se muestra al completar el programa de 21 días
@@ -19,11 +18,11 @@ class CertificateScreen extends StatefulWidget {
   final String? programName;
 
   const CertificateScreen({
-    Key? key,
+    super.key,
     this.username,
     this.completionDate,
     this.programName = 'Programa de Manejo de Estrés Laboral',
-  }) : super(key: key);
+  });
 
   @override
   _CertificateScreenState createState() => _CertificateScreenState();
@@ -245,7 +244,7 @@ class _CertificateScreenState extends State<CertificateScreen>
               print('❌ Error al guardar PDF en móvil: $e');
               if (mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
+                  const SnackBar(
                     content: Text('Error al guardar el certificado'),
                     backgroundColor: Colors.red,
                   ),
@@ -378,7 +377,7 @@ class _CertificateScreenState extends State<CertificateScreen>
       print('❌ Error al generar PDF: $e');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Error al generar el certificado'),
             backgroundColor: Colors.red,
           ),
@@ -422,7 +421,7 @@ class _CertificateScreenState extends State<CertificateScreen>
       print('❌ Error al compartir: $e');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Error al compartir el certificado'),
             backgroundColor: Colors.red,
           ),
@@ -501,7 +500,7 @@ class _CertificateScreenState extends State<CertificateScreen>
             ElevatedButton(
               onPressed: () => Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => HomeScreen()),
+                MaterialPageRoute(builder: (context) => const HomeScreen()),
               ),
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF6D4BD8),
@@ -547,15 +546,15 @@ class _CertificateScreenState extends State<CertificateScreen>
                   child: IntrinsicHeight(
                     child: Padding(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 40, vertical: 24),
+                          const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Spacer(flex: 1),
+                          const Spacer(flex: 1),
                           _buildHeader(context),
-                          SizedBox(height: 48),
+                          const SizedBox(height: 48),
                           _buildActionButtons(context),
-                          Spacer(flex: 1),
+                          const Spacer(flex: 1),
                         ],
                       ),
                     ),
@@ -634,7 +633,7 @@ class _CertificateScreenState extends State<CertificateScreen>
         borderRadius: BorderRadius.circular(isDesktop ? 24 : 20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withValues(alpha: 0.08),
             blurRadius: isDesktop ? 24 : 20,
             offset: const Offset(0, 4),
           ),
@@ -648,7 +647,7 @@ class _CertificateScreenState extends State<CertificateScreen>
                 ? 20
                 : (isMediumTablet ? 18 : (isSmallTablet ? 17 : 16))),
             decoration: BoxDecoration(
-              color: const Color(0xFF6D4BD8).withOpacity(0.1),
+              color: const Color(0xFF6D4BD8).withValues(alpha: 0.1),
               shape: BoxShape.circle,
             ),
             child: Icon(
@@ -699,10 +698,10 @@ class _CertificateScreenState extends State<CertificateScreen>
               vertical: isDesktop ? 14 : 12,
             ),
             decoration: BoxDecoration(
-              color: const Color(0xFF6D4BD8).withOpacity(0.1),
+              color: const Color(0xFF6D4BD8).withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
-                color: const Color(0xFF6D4BD8).withOpacity(0.3),
+                color: const Color(0xFF6D4BD8).withValues(alpha: 0.3),
                 width: 1,
               ),
             ),
@@ -786,7 +785,7 @@ class _CertificateScreenState extends State<CertificateScreen>
                 borderRadius: BorderRadius.circular(borderRadius),
               ),
               elevation: isDesktop ? 2 : 4,
-              shadowColor: Colors.black.withOpacity(0.2),
+              shadowColor: Colors.black.withValues(alpha: 0.2),
             ),
           ),
         ),
@@ -824,7 +823,7 @@ class _CertificateScreenState extends State<CertificateScreen>
           onPressed: () {
             Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (context) => HomeScreen()),
+              MaterialPageRoute(builder: (context) => const HomeScreen()),
               (route) => false,
             );
           },

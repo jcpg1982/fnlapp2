@@ -11,11 +11,12 @@ import '../Main/widgets/custom_navigation_bar.dart';
 import 'plan.dart';
 import './widgets/chat_widget.dart';
 import 'mitest.dart';
-import './ExitTest/exit_test_screen.dart';
 import 'package:fnlapp/Util/enums.dart';
 import 'package:fnlapp/Main/testestres_form.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -205,7 +206,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
         );
       case 4:
         if (showExitTest) {
-          return TestEstresQuestionScreen();
+          return const TestEstresQuestionScreen();
         }
         return PlanScreen(
           nivelEstres: nivelEstres,
@@ -224,7 +225,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF5027D0),
+      backgroundColor: const Color(0xFF5027D0),
       body: isLoading
           ? const Center(
               child: CircularProgressIndicator(
@@ -258,7 +259,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     if (mounted) {
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => LoginScreen()),
+        MaterialPageRoute(builder: (context) => const LoginScreen()),
         (Route<dynamic> route) => false,
       );
     }

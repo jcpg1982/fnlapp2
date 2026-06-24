@@ -125,12 +125,12 @@ class PlanScreen extends StatefulWidget {
   final bool showExitTestModal;
 
   const PlanScreen({
-    Key? key,
+    super.key,
     required this.nivelEstres,
     required this.isLoading,
     required this.programas,
     this.showExitTestModal = false,
-  }) : super(key: key);
+  });
 
   @override
   _PlanScreenState createState() => _PlanScreenState();
@@ -256,7 +256,7 @@ class _PlanScreenState extends State<PlanScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => TestEstresQuestionScreen(),
+                              builder: (context) => const TestEstresQuestionScreen(),
                             ),
                           );
                         },
@@ -422,7 +422,7 @@ class _PlanScreenState extends State<PlanScreen> {
             ),
           ),
           Text(
-            "${_progressPercentage}%",
+            "$_progressPercentage%",
             style: const TextStyle(
               color: AppColors.primary,
               fontSize: 16,
@@ -569,7 +569,7 @@ class _PlanScreenState extends State<PlanScreen> {
       borderRadius: BorderRadius.circular(AppConstants.cardBorderRadius),
       boxShadow: [
         BoxShadow(
-          color: Colors.grey.withOpacity(0.3),
+          color: Colors.grey.withValues(alpha: 0.3),
           spreadRadius: 2,
           blurRadius: 6,
           offset: const Offset(0, 3),

@@ -5,11 +5,11 @@ class SplashScreen extends StatelessWidget {
   final int userId;
   final String username; // Agregar username
 
-  SplashScreen({required this.userId, required this.username}); // Requerir username
+  const SplashScreen({super.key, required this.userId, required this.username}); // Requerir username
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(

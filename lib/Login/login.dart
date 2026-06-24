@@ -7,9 +7,10 @@ import '../Util/token_service.dart';
 import '../config.dart'; // Importa el archivo de configuración
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -19,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController passwordController = TextEditingController();
   final ValueNotifier<bool> passwordVisible = ValueNotifier(false);
   final _formKey = GlobalKey<FormState>();
-  final FlutterSecureStorage secureStorage = FlutterSecureStorage();
+  final FlutterSecureStorage secureStorage = const FlutterSecureStorage();
   bool isLoading = false;  // Variable para controlar el estado de carga
   final ValueNotifier<bool> rememberMe = ValueNotifier(false);  // Variable para el checkbox de recordar
 
@@ -183,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
           // Fondo de pantalla completo
           Positioned.fill(
             child: Container(
-              color: Color(0xFF5027D0),
+              color: const Color(0xFF5027D0),
               child: SvgPicture.network(
                 'https://funkyrecursos.s3.us-east-2.amazonaws.com/assets/wallpaper+log-in.svg',
                 fit: BoxFit.cover,
@@ -222,20 +223,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                 : double.infinity,
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(30),
                                 topRight: Radius.circular(30),
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.1),
+                                  color: Colors.black.withValues(alpha: 0.1),
                                   blurRadius: 10,
-                                  offset: Offset(0, -2),
+                                  offset: const Offset(0, -2),
                                 ),
                               ],
                             ),
                             child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+                              padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
                               child: Form(
                                 key: _formKey,
                                 child: Column(
@@ -243,13 +244,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Distribuir espacio uniformemente
                                   children: [
                                     // Texto bienvenida
-                                    Center(
+                                    const Center(
                                       child: Column(
                                         children: [
                                           Text(
                                             'Bienvenido!',
                                             style: TextStyle(
-                                              color: const Color(0xFF020107),
+                                              color: Color(0xFF020107),
                                               fontSize: 32,
                                               fontFamily: 'Inter',
                                               fontWeight: FontWeight.w700,
@@ -259,7 +260,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           Text(
                                             'Ingresa tu usuario y contraseña',
                                             style: TextStyle(
-                                              color: const Color(0xFF020107),
+                                              color: Color(0xFF020107),
                                               fontSize: 18,
                                               fontFamily: 'Roboto',
                                               fontWeight: FontWeight.w400,
@@ -274,30 +275,30 @@ class _LoginScreenState extends State<LoginScreen> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         // Campo de Usuario
-                                        Text(
+                                        const Text(
                                           'Usuario',
                                           style: TextStyle(
-                                            color: const Color(0xFF212121),
+                                            color: Color(0xFF212121),
                                             fontSize: 16,
                                             fontFamily: 'Roboto',
                                             fontWeight: FontWeight.w500,
                                           ),
                                         ),
-                                        SizedBox(height: 4),
+                                        const SizedBox(height: 4),
                                         _buildTextField('Nombre de Usuario', usernameController),
-                                        SizedBox(height: 16),
+                                        const SizedBox(height: 16),
 
                                         // Campo de Contraseña
-                                        Text(
+                                        const Text(
                                           'Contraseña',
                                           style: TextStyle(
-                                            color: const Color(0xFF212121),
+                                            color: Color(0xFF212121),
                                             fontSize: 16,
                                             fontFamily: 'Roboto',
                                             fontWeight: FontWeight.w500,
                                           ),
                                         ),
-                                        SizedBox(height: 4),
+                                        const SizedBox(height: 4),
                                         _buildTextField('Escriba su contraseña', passwordController, obscureText: true),
                                       ],
                                     ),
@@ -325,15 +326,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                                       color: value ? const Color(0xFF52178F) : Colors.transparent,
                                                     ),
                                                     child: value
-                                                        ? Icon(Icons.check, size: 10, color: Colors.white)
+                                                        ? const Icon(Icons.check, size: 10, color: Colors.white)
                                                         : null,
                                                   ),
                                                 ),
-                                                SizedBox(width: 8),
-                                                Text(
+                                                const SizedBox(width: 8),
+                                                const Text(
                                                   'Recuérdame',
                                                   style: TextStyle(
-                                                    color: const Color(0xFF333333),
+                                                    color: Color(0xFF333333),
                                                     fontSize: 14,
                                                     fontFamily: 'Inter',
                                                     fontWeight: FontWeight.w500,
@@ -348,14 +349,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => ForgotPasswordScreen(),
+                                                builder: (context) => const ForgotPasswordScreen(),
                                               ),
                                             );
                                           },
-                                          child: Text(
+                                          child: const Text(
                                             'Olvidé mi contraseña',
                                             style: TextStyle(
-                                              color: const Color(0xFF290B47),
+                                              color: Color(0xFF290B47),
                                               fontSize: 14,
                                               fontFamily: 'Inter',
                                               fontWeight: FontWeight.w600,
@@ -368,21 +369,21 @@ class _LoginScreenState extends State<LoginScreen> {
 
                                     // Botón de Login
                                     isLoading
-                                        ? Center(child: CircularProgressIndicator())
-                                        : Container(
+                                        ? const Center(child: CircularProgressIndicator())
+                                        : SizedBox(
                                             width: double.infinity,
                                             child: ElevatedButton(
                                               onPressed: () => _login(context),
                                               style: ElevatedButton.styleFrom(
                                                 backgroundColor:const Color(0xFF6D4BD8),
-                                                padding: EdgeInsets.symmetric(vertical: 12),
+                                                padding: const EdgeInsets.symmetric(vertical: 12),
                                                 shape: RoundedRectangleBorder(
                                                   borderRadius: BorderRadius.circular(40),
                                                 ),
                                                 elevation: 6,
-                                                shadowColor: Color(0x26000000),
+                                                shadowColor: const Color(0x26000000),
                                               ),
-                                              child: Text(
+                                              child: const Text(
                                                 'Iniciar Sesión',
                                                 style: TextStyle(
                                                   color: Colors.white,
@@ -393,7 +394,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               ),
                                             ),
                                           ),
-                                    SizedBox(height: 16),
+                                    const SizedBox(height: 16),
 
                                     // Enlace para ir a registro
                                     Center(
@@ -402,9 +403,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                           Navigator.pushReplacementNamed(context, '/register');
                                         },
                                         child: RichText(
-                                          text: TextSpan(
+                                          text: const TextSpan(
                                             style: TextStyle(
-                                              color: const Color(0xFF333333),
+                                              color: Color(0xFF333333),
                                               fontSize: 14,
                                               fontFamily: 'Inter',
                                             ),
@@ -413,7 +414,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               TextSpan(
                                                 text: 'Regístrate',
                                                 style: TextStyle(
-                                                  color: const Color(0xFF290B47),
+                                                  color: Color(0xFF290B47),
                                                   fontWeight: FontWeight.w600,
                                                   decoration: TextDecoration.underline,
                                                 ),
@@ -443,13 +444,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _buildTextField(String hintText, TextEditingController controller, {bool obscureText = false}) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.0),
-      margin: EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      margin: const EdgeInsets.symmetric(vertical: 8.0),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.85),
+        color: Colors.white.withValues(alpha: 0.85),
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: Color(0xFF7F7F7F),
+          color: const Color(0xFF7F7F7F),
           width: 1.0,
         ),
       ),

@@ -12,14 +12,13 @@ import 'package:fnlapp/config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../Preguntas/index.dart';
 import '../Preguntas/questions_data.dart';
-import 'package:fnlapp/Main/home.dart';
 import '../Util/api_service.dart';
 import '../Util/test_notices_data.dart';
 import '../services/subscription_service.dart';
 import 'package:fnlapp/Main/certificate_screen.dart';
 
 class TestEstresQuestionScreen extends StatefulWidget {
-  const TestEstresQuestionScreen({Key? key}) : super(key: key);
+  const TestEstresQuestionScreen({super.key});
 
   @override
   _TestEstresQuestionScreenState createState() =>
@@ -273,7 +272,7 @@ class _TestEstresQuestionScreenState extends State<TestEstresQuestionScreen> {
     if (isSubmitting) {
       print("Test ya está siendo enviado");
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
             content: Text('Por favor espera, el test se está procesando...')),
       );
       return;
@@ -308,7 +307,7 @@ class _TestEstresQuestionScreenState extends State<TestEstresQuestionScreen> {
       if (userId == null) {
         print("Error: userId es null");
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: No se ha cargado el ID del usuario')),
+          const SnackBar(content: Text('Error: No se ha cargado el ID del usuario')),
         );
         return;
       }
@@ -323,7 +322,7 @@ class _TestEstresQuestionScreenState extends State<TestEstresQuestionScreen> {
       if (token == null) {
         print('Error: No se encontró el token.');
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: Token no disponible')),
+          const SnackBar(content: Text('Error: Token no disponible')),
         );
         return;
       }
@@ -379,7 +378,7 @@ class _TestEstresQuestionScreenState extends State<TestEstresQuestionScreen> {
       if (saveResponse.statusCode != 201) {
         print('Error al guardar el test: ${saveResponse.body}');
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error al guardar el test')),
+          const SnackBar(content: Text('Error al guardar el test')),
         );
         return;
       }
@@ -477,7 +476,7 @@ class _TestEstresQuestionScreenState extends State<TestEstresQuestionScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) =>
-                      SubscriptionScreen(showBackButton: false),
+                      const SubscriptionScreen(showBackButton: false),
                 ),
               );
 
@@ -548,7 +547,7 @@ class _TestEstresQuestionScreenState extends State<TestEstresQuestionScreen> {
     } catch (e) {
       print('Error al procesar el test: $e');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error al procesar el test')),
+        const SnackBar(content: Text('Error al procesar el test')),
       );
     } finally {
       // Desactivar el bloqueo al finalizar, sea éxito o error
@@ -564,14 +563,14 @@ class _TestEstresQuestionScreenState extends State<TestEstresQuestionScreen> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Row(
+          title: const Row(
             children: [
               Icon(Icons.workspace_premium, color: Color(0xFF5027D0)),
               SizedBox(width: 8),
               Text('Funcy PRO'),
             ],
           ),
-          content: Text(
+          content: const Text(
             'Para obtener tu programa personalizado de 30 dias, debes suscribirte a Funcy PRO.\n\n¿Deseas suscribirte ahora?',
             style: TextStyle(fontSize: 16),
           ),
@@ -579,10 +578,10 @@ class _TestEstresQuestionScreenState extends State<TestEstresQuestionScreen> {
             ElevatedButton(
               onPressed: () => Navigator.of(context).pop(true),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF5027D0),
+                backgroundColor: const Color(0xFF5027D0),
                 foregroundColor: Colors.white,
               ),
-              child: Text('Suscribirme'),
+              child: const Text('Suscribirme'),
             ),
           ],
         );
@@ -729,7 +728,7 @@ class _TestEstresQuestionScreenState extends State<TestEstresQuestionScreen> {
 
     // Verificación inicial para asegurarse de que 'questions' no esté vacío y que el índice esté en rango
     if (questions.isEmpty || currentQuestionIndex >= questions.length) {
-      return Scaffold(
+      return const Scaffold(
         body: Center(
           child: Text(
               "No hay preguntas disponibles"), // Mensaje de error si no hay preguntas
@@ -762,15 +761,15 @@ class _TestEstresQuestionScreenState extends State<TestEstresQuestionScreen> {
           final maxContentWidth = isTablet ? 800.0 : double.infinity;
 
           return Container(
-            color: Color(0xFFF6F6F6),
+            color: const Color(0xFFF6F6F6),
             child: Column(
               children: [
                 // Header con icono de retroceso y título (fijo)
                 Container(
                   margin: EdgeInsets.only(
                       top: MediaQuery.of(context).padding.top + 10),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFF6F6F6),
+                  decoration: const BoxDecoration(
+                    color: Color(0xFFF6F6F6),
                     boxShadow: [
                       BoxShadow(
                         color: Color(0x14000000),
@@ -794,7 +793,7 @@ class _TestEstresQuestionScreenState extends State<TestEstresQuestionScreen> {
                               padding: const EdgeInsets.all(8.0),
                               child: Icon(
                                 Icons.arrow_back_ios,
-                                color: Color(0xFF4320AD),
+                                color: const Color(0xFF4320AD),
                                 size: iconSize,
                               ),
                             ),
@@ -881,7 +880,7 @@ class _TestEstresQuestionScreenState extends State<TestEstresQuestionScreen> {
                             final optionDetail = question[detailKey];
 
                             if (optionText == null || optionDetail == null) {
-                              return SizedBox.shrink();
+                              return const SizedBox.shrink();
                             }
 
                             bool isSelected =
@@ -902,11 +901,11 @@ class _TestEstresQuestionScreenState extends State<TestEstresQuestionScreen> {
                                   ),
                                   decoration: BoxDecoration(
                                     color: isSelected
-                                        ? Color(0x8E5027D0)
+                                        ? const Color(0x8E5027D0)
                                         : Colors.white,
                                     border: Border.all(
                                       width: 2,
-                                      color: Color(0xFF6D4BD8),
+                                      color: const Color(0xFF6D4BD8),
                                     ),
                                     borderRadius: BorderRadius.circular(16),
                                   ),
@@ -919,7 +918,7 @@ class _TestEstresQuestionScreenState extends State<TestEstresQuestionScreen> {
                                         style: TextStyle(
                                           color: isSelected
                                               ? Colors.white
-                                              : Color(0xFF6D4BD8),
+                                              : const Color(0xFF6D4BD8),
                                           fontSize: optionFontSize,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -1024,7 +1023,7 @@ class _TestEstresQuestionScreenState extends State<TestEstresQuestionScreen> {
                                     ? SizedBox(
                                         width: isTablet ? 24 : 20,
                                         height: isTablet ? 24 : 20,
-                                        child: CircularProgressIndicator(
+                                        child: const CircularProgressIndicator(
                                           valueColor:
                                               AlwaysStoppedAnimation<Color>(
                                                   Colors.white),

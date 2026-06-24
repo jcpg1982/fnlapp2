@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class PoliticaPrivacidadScreen extends StatelessWidget {
+  const PoliticaPrivacidadScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Política de Privacidad'),
+        title: const Text('Política de Privacidad'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context); // Navigate back to the previous screen
           },
@@ -19,22 +21,22 @@ class PoliticaPrivacidadScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 '- Política de Privacidad -',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 16),
-              Text(
+              const SizedBox(height: 16),
+              const Text(
                 'Actualizado por última vez: 13 de enero del 2025',
                 style: TextStyle(
                   fontSize: 14,
                   fontStyle: FontStyle.italic,
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               _buildSection(
                 '1. Introducción',
                 'En Funcional Neuro Laboral reconocemos la importancia de proteger los datos personales de nuestros usuarios y nos comprometemos a garantizar la confidencialidad, seguridad y uso adecuado de la información recopilada. Estas políticas de privacidad se rigen por la normativa vigente en la República del Perú, incluyendo la Ley Nº 29733, Ley de Protección de Datos Personales, y su Reglamento aprobado mediante el Decreto Supremo Nº 003-2013-JUS.',
@@ -76,18 +78,18 @@ class PoliticaPrivacidadScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
           content,
-          style: TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 16),
         ),
       ],
     );

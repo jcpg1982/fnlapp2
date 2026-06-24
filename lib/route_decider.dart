@@ -35,7 +35,7 @@ class RouteWrapper extends StatelessWidget {
             });
             return const SizedBox(); // pantalla vacía temporal
           } else {
-            return HomeScreen();
+            return const HomeScreen();
           }
         }
 
@@ -49,7 +49,7 @@ class RouteWrapper extends StatelessWidget {
           }
           // Si falta el test de estrés, ir al test
           else if (permisopoliticas && userresponsebool && !testestresbool) {
-            return TestEstresQuestionScreen();
+            return const TestEstresQuestionScreen();
           }
           // Si faltan políticas o respuestas iniciales, ir al index
           else {
@@ -61,11 +61,11 @@ class RouteWrapper extends StatelessWidget {
         }
 
         if (routeName == '/login') {
-          return LoginScreen();
+          return const LoginScreen();
         }
 
         // Default: splash
-        return SplashScreen();
+        return const SplashScreen();
       },
     );
   }

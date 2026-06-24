@@ -4,7 +4,7 @@ class ChatBoxFooter extends StatelessWidget {
   final TextEditingController textEditingController;
   final Function(String) onSendMessage;
 
-  ChatBoxFooter({
+  const ChatBoxFooter({super.key, 
     required this.textEditingController,
     required this.onSendMessage,
   });
@@ -12,13 +12,13 @@ class ChatBoxFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0),
       child: Row(
         children: [
           // Campo de texto expandido
           Expanded(
             child: Container(
-              constraints: BoxConstraints(
+              constraints: const BoxConstraints(
                 minHeight: 50,
                 maxHeight: 120,
               ),
@@ -26,22 +26,22 @@ class ChatBoxFooter extends StatelessWidget {
               decoration: ShapeDecoration(
                 color: const Color(0xFFF8F7FD),
                 shape: RoundedRectangleBorder(
-                  side: BorderSide(width: 1, color: Colors.black),
+                  side: const BorderSide(width: 1, color: Colors.black),
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
               child: TextField(
                 controller: textEditingController,
-                style: TextStyle(
-                  color: const Color(0xFF020107),
+                style: const TextStyle(
+                  color: Color(0xFF020107),
                   fontSize: 16,
                   fontFamily: 'Inter',
                   fontWeight: FontWeight.w500,
                 ),
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Mensaje...',
                   hintStyle: TextStyle(
-                    color: const Color(0xFF222222),
+                    color: Color(0xFF222222),
                     fontSize: 16,
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w500,
@@ -65,7 +65,7 @@ class ChatBoxFooter extends StatelessWidget {
             ),
           ),
 
-          SizedBox(width: 8), // Espaciado entre el campo y el botón
+          const SizedBox(width: 8), // Espaciado entre el campo y el botón
 
           // Botón de enviar
           Container(
@@ -78,7 +78,7 @@ class ChatBoxFooter extends StatelessWidget {
               ),
             ),
             child: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.send,
                 color: Colors.white,
                 size: 20,

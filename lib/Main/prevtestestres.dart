@@ -3,7 +3,7 @@ import 'package:fnlapp/Main/testestres_form.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TestEstresScreen extends StatelessWidget {
-  const TestEstresScreen({Key? key}) : super(key: key);
+  const TestEstresScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,7 @@ class TestEstresScreen extends StatelessWidget {
                             color: Colors.grey[200],
                             borderRadius: BorderRadius.circular(12),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: CircularProgressIndicator(),
                           ),
                         ),
@@ -113,7 +113,7 @@ class TestEstresScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => TestEstresQuestionScreen(),
+                            builder: (context) => const TestEstresQuestionScreen(),
                           ),
                         );
                       },

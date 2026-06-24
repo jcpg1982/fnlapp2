@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class CondicionesUsoScreen extends StatelessWidget {
+  const CondicionesUsoScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Condiciones de Uso'),
+        title: const Text('Condiciones de Uso'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context); // Navigate back to the previous screen
           },
@@ -19,22 +21,22 @@ class CondicionesUsoScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 '- Condiciones de Uso -',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 16),
-              Text(
+              const SizedBox(height: 16),
+              const Text(
                 'Actualizado por última vez: 13 de enero del 2025',
                 style: TextStyle(
                   fontSize: 14,
                   fontStyle: FontStyle.italic,
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               _buildSection('1. Aceptación de las Condiciones de Uso',
                   'El acceso y uso de la aplicación Funcional Neuro Laboral (en adelante, "la Aplicación") están sujetos a las presentes Condiciones de Uso. Al acceder, descargar o utilizar la Aplicación, el usuario declara haber leído, comprendido y aceptado estas condiciones en su totalidad. Si no está de acuerdo con alguna de las disposiciones, debe abstenerse de utilizar la Aplicación.'),
               _buildSection(
@@ -92,18 +94,18 @@ class CondicionesUsoScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
           content,
-          style: TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 16),
         ),
       ],
     );

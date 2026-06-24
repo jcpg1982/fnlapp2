@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:http/http.dart' as http;
 import 'package:fnlapp/Main/home.dart';
-import 'dart:convert';
-import '../config.dart';
 import '../Util/api_service.dart';
 
 class FinalStepScreen extends StatefulWidget {
@@ -12,11 +9,11 @@ class FinalStepScreen extends StatefulWidget {
   final int sessionId;
 
   const FinalStepScreen({
-    Key? key,
+    super.key,
     required this.userId,
     required this.tecnicaId,
     required this.sessionId,
-  }) : super(key: key);
+  });
 
   @override
   State<FinalStepScreen> createState() => _FinalStepScreenState();
@@ -176,7 +173,7 @@ class _FinalStepScreenState extends State<FinalStepScreen>
       if (mounted) {
         Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
               (Route<dynamic> route) => false,
         );
       }
@@ -314,9 +311,9 @@ class _FinalStepScreenState extends State<FinalStepScreen>
           itemCount: 5,
           itemSize: dimensions.starSize,
           itemPadding: EdgeInsets.symmetric(horizontal: dimensions.starSize * 0.05),
-          glowColor: _starColor.withOpacity(0.3),
+          glowColor: _starColor.withValues(alpha: 0.3),
           unratedColor: const Color(0xFFB7B7B7),
-          itemBuilder: (context, index) => Icon(
+          itemBuilder: (context, index) => const Icon(
             Icons.star_rounded,
             color: _starColor,
           ),
@@ -336,7 +333,7 @@ class _FinalStepScreenState extends State<FinalStepScreen>
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -411,7 +408,7 @@ class _FinalStepScreenState extends State<FinalStepScreen>
         height: buttonSize,
         decoration: BoxDecoration(
           color: isSelected
-              ? mood.color.withOpacity(0.2)
+              ? mood.color.withValues(alpha: 0.2)
               : Colors.transparent,
           borderRadius: BorderRadius.circular(buttonSize / 2),
           border: Border.all(
@@ -421,7 +418,7 @@ class _FinalStepScreenState extends State<FinalStepScreen>
         ),
         child: Icon(
           mood.icon,
-          color: isSelected ? mood.color : Colors.white.withOpacity(0.6),
+          color: isSelected ? mood.color : Colors.white.withValues(alpha: 0.6),
           size: dimensions.moodIconSize,
         ),
       ),
@@ -434,7 +431,7 @@ class _FinalStepScreenState extends State<FinalStepScreen>
     return Container(
       padding: EdgeInsets.all(dimensions.padding * 0.8),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.1),
+        color: Colors.white.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Text(

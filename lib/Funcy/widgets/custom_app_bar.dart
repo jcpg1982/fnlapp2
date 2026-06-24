@@ -4,13 +4,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double scrollOffset;
   final Color backgroundColor;
 
-  CustomAppBar({
+  const CustomAppBar({super.key, 
     required this.scrollOffset,
     this.backgroundColor = Colors.white, // Color por defecto
   });
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       decoration: BoxDecoration(
         color: backgroundColor,
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Color(0x14000000),
             blurRadius: 8,
@@ -39,7 +39,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Container(
+              child: const SizedBox(
                 width: 32,
                 height: 32,
                 child: Icon(
@@ -51,10 +51,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
 
             // Título centrado
-            Text(
+            const Text(
               'Conversa con Funcy',
               style: TextStyle(
-                color: const Color(0xFF4320AD),
+                color: Color(0xFF4320AD),
                 fontSize: 16,
                 fontFamily: 'Inter',
                 fontWeight: FontWeight.w600,
@@ -62,7 +62,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
 
             // Contenedor del lado derecho (puedes agregar funcionalidad aquí)
-            Container(
+            const SizedBox(
               width: 32,
               height: 32,
               // Opcional: agregar un ícono o funcionalidad

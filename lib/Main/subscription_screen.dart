@@ -10,9 +10,9 @@ class SubscriptionScreen extends StatefulWidget {
   final bool showBackButton;
 
   const SubscriptionScreen({
-    Key? key,
+    super.key,
     this.showBackButton = true,
-  }) : super(key: key);
+  });
 
   @override
   _SubscriptionScreenState createState() => _SubscriptionScreenState();
@@ -115,7 +115,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
         });
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
+            const SnackBar(
               content: Text('Compra cancelada'),
               backgroundColor: Colors.orange,
             ),
@@ -131,7 +131,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
 
   void _showPendingUI() {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Procesando compra...')),
+      const SnackBar(content: Text('Procesando compra...')),
     );
   }
 
@@ -199,7 +199,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
               content: Text(result['message'] ??
                   '¡Suscripción PRO activada correctamente!'),
               backgroundColor: Colors.green,
-              duration: Duration(seconds: 3),
+              duration: const Duration(seconds: 3),
             ),
           );
 
@@ -210,7 +210,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
             Navigator.of(context).pop(true);
           } else {
             // Si por alguna razón no tiene acceso aún, esperar un momento y verificar de nuevo
-            await Future.delayed(Duration(seconds: 1));
+            await Future.delayed(const Duration(seconds: 1));
             final hasAccessRetry =
                 await SubscriptionService.hasAccessToPrograms();
             if (hasAccessRetry) {
@@ -218,7 +218,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
             } else {
               // Mostrar mensaje informativo
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
+                const SnackBar(
                   content: Text(
                       'Suscripción activada. Por favor, espera unos segundos...'),
                   backgroundColor: Colors.blue,
@@ -243,7 +243,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
           SnackBar(
             content: Text('Error al verificar compra: ${e.toString()}'),
             backgroundColor: Colors.red,
-            duration: Duration(seconds: 4),
+            duration: const Duration(seconds: 4),
           ),
         );
       }
@@ -292,7 +292,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
         elevation: 0,
         leading: widget.showBackButton
             ? IconButton(
-                icon: Icon(Icons.arrow_back, color: Colors.white),
+                icon: const Icon(Icons.arrow_back, color: Colors.white),
                 onPressed: () => Navigator.of(context).pop(),
               )
             : null,
@@ -318,7 +318,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
   Widget _buildPortraitLayout(Size size, BoxConstraints constraints,
       double horizontalPadding, bool isSmallPhone, bool isTablet) {
     return SingleChildScrollView(
-      physics: ClampingScrollPhysics(),
+      physics: const ClampingScrollPhysics(),
       child: ConstrainedBox(
         constraints: BoxConstraints(
           minHeight: constraints.maxHeight,
@@ -371,15 +371,15 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       _buildHeader(size, isTablet: isTablet, isLandscape: true),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       _buildPriceCard(size, isTablet: isTablet),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       _buildSubscribeButton(size,
                           isDesktop: isDesktop, isTablet: isTablet),
                     ],
                   ),
                 ),
-                SizedBox(width: 32),
+                const SizedBox(width: 32),
                 // Lado derecho: Features
                 Expanded(
                   flex: 5,
@@ -413,14 +413,14 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
       children: [
         Container(
           padding: EdgeInsets.all(iconPadding),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.white,
           ),
           child: Icon(
             Icons.workspace_premium,
             size: iconSize,
-            color: Color(0xFF5027D0),
+            color: const Color(0xFF5027D0),
           ),
         ),
         SizedBox(height: isLandscape ? 10 : 14),
@@ -432,9 +432,9 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
             color: Colors.white,
           ),
         ),
-        SizedBox(height: 6),
+        const SizedBox(height: 6),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
             'Desbloquea tu mejor versión con Funcy',
             textAlign: TextAlign.center,
@@ -477,9 +477,9 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.15),
+            color: Colors.black.withValues(alpha: 0.15),
             blurRadius: 10,
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -498,30 +498,30 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                 Container(
                   padding: EdgeInsets.all(iconContainerPadding),
                   decoration: BoxDecoration(
-                    color: Color(0xFF5027D0).withOpacity(0.1),
+                    color: const Color(0xFF5027D0).withValues(alpha: 0.1),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
                     feature['icon'] as IconData,
-                    color: Color(0xFF5027D0),
+                    color: const Color(0xFF5027D0),
                     size: iconSize,
                   ),
                 ),
-                SizedBox(width: 12),
+                const SizedBox(width: 12),
                 Expanded(
                   child: Text(
                     feature['text'] as String,
                     style: GoogleFonts.inter(
                       fontSize: fontSize,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xFF212121),
+                      color: const Color(0xFF212121),
                     ),
                   ),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Icon(
                   Icons.check_circle,
-                  color: Color(0xFF5027D0),
+                  color: const Color(0xFF5027D0),
                   size: checkSize,
                 ),
               ],
@@ -534,7 +534,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
 
   Widget _buildPriceCard(Size size, {bool isTablet = false}) {
     if (_isLoading) {
-      return Center(
+      return const Center(
         child: CircularProgressIndicator(color: Colors.white),
       );
     }
@@ -570,21 +570,21 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
               height: 1,
               shadows: [
                 Shadow(
-                  color: Colors.black.withOpacity(0.3),
-                  offset: Offset(0, 2),
+                  color: Colors.black.withValues(alpha: 0.3),
+                  offset: const Offset(0, 2),
                   blurRadius: 8,
                 ),
               ],
             ),
           ),
         ),
-        SizedBox(height: 4),
+        const SizedBox(height: 4),
         Text(
           'por mes',
           style: GoogleFonts.inter(
             fontSize: labelSize,
             fontWeight: FontWeight.w500,
-            color: Colors.white.withOpacity(0.9),
+            color: Colors.white.withValues(alpha: 0.9),
             letterSpacing: 0.5,
           ),
         ),
@@ -611,9 +611,9 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                 : () => _buyProduct(_products.first),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,
-              foregroundColor: Color(0xFF5027D0),
-              disabledBackgroundColor: Colors.white.withOpacity(0.6),
-              disabledForegroundColor: Color(0xFF5027D0).withOpacity(0.5),
+              foregroundColor: const Color(0xFF5027D0),
+              disabledBackgroundColor: Colors.white.withValues(alpha: 0.6),
+              disabledForegroundColor: const Color(0xFF5027D0).withValues(alpha: 0.5),
               padding: EdgeInsets.symmetric(vertical: buttonPadding),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(40),
@@ -621,7 +621,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
               elevation: 4,
             ),
             child: _isLoading
-                ? SizedBox(
+                ? const SizedBox(
                     height: 20,
                     width: 20,
                     child: CircularProgressIndicator(

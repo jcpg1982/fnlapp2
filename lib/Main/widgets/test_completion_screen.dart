@@ -4,9 +4,9 @@ class TestCompletionScreen extends StatefulWidget {
   final Future<void> Function() onFinalize;
 
   const TestCompletionScreen({
-    Key? key,
+    super.key,
     required this.onFinalize,
-  }) : super(key: key);
+  });
 
   @override
   State<TestCompletionScreen> createState() => _TestCompletionScreenState();
@@ -226,7 +226,7 @@ class _TestCompletionScreenState extends State<TestCompletionScreen> {
         Container(
           padding: EdgeInsets.all(screenWidth * (isTablet ? 0.02 : 0.022)),
           decoration: BoxDecoration(
-            color: const Color(0xFF5027D0).withOpacity(0.1),
+            color: const Color(0xFF5027D0).withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Icon(

@@ -11,7 +11,7 @@ import 'dart:convert';
 import '../config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http_parser/http_parser.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart' hide Config;
 import 'package:fnlapp/Main/certificate_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -21,7 +21,8 @@ class ProfileScreen extends StatefulWidget {
   final Function(String)? onProfileImageUpdated;
   final bool isDay21Completed;
 
-  ProfileScreen({
+  const ProfileScreen({
+    super.key,
     required this.profileData,
     required this.onLogout,
     this.onImageSelected,
@@ -30,7 +31,7 @@ class ProfileScreen extends StatefulWidget {
   });
 
   @override
-  _ProfileScreenState createState() => _ProfileScreenState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
@@ -75,7 +76,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         throw Exception('Error al cargar suscripción');
       }
     } catch (e) {
-      print('Error al cargar datos de suscripción: $e');
+      debugPrint('Error al cargar datos de suscripción: $e');
       setState(() {
         _loadingSubscription = false;
       });
@@ -102,7 +103,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         await _loadSubscriptionData();
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
+            const SnackBar(
               content: Text('Suscripción cancelada exitosamente'),
               backgroundColor: Colors.green,
             ),
@@ -114,7 +115,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Error al cancelar suscripción'),
             backgroundColor: Colors.red,
           ),
@@ -128,18 +129,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Cancelar suscripción'),
-          content: Text(
+          title: const Text('Cancelar suscripción'),
+          content: const Text(
               '¿Estás seguro de que deseas cancelar tu suscripción Funcy PRO?'),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(false),
-              child: Text('No'),
+              child: const Text('No'),
             ),
             TextButton(
               onPressed: () => Navigator.of(context).pop(true),
               style: TextButton.styleFrom(foregroundColor: Colors.red),
-              child: Text('Sí, cancelar'),
+              child: const Text('Sí, cancelar'),
             ),
           ],
         );
@@ -236,7 +237,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
+            const SnackBar(
               content: Text('Imagen de perfil actualizada exitosamente'),
               backgroundColor: Colors.green,
               duration: Duration(seconds: 2),
@@ -251,7 +252,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Error al actualizar imagen de perfil'),
             backgroundColor: Colors.red,
             duration: Duration(seconds: 2),
@@ -293,7 +294,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         });
       }
     } catch (e) {
-      print('Error al recargar perfil desde servidor: $e');
+      debugPrint('Error al recargar perfil desde servidor: $e');
     }
   }
 
@@ -337,7 +338,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         await _uploadProfileImage();
       }
     } catch (e) {
-      print('Error al seleccionar imagen: $e');
+      debugPrint('Error al seleccionar imagen: $e');
     }
   }
 
@@ -392,20 +393,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Cerrar sesión'),
-          content: Text('¿Deseas cerrar sesión en todos tus dispositivos?'),
+          title: const Text('Cerrar sesión'),
+          content: const Text('¿Deseas cerrar sesión en todos tus dispositivos?'),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text('Cancelar'),
+              child: const Text('Cancelar'),
             ),
             TextButton(
               onPressed: () => Navigator.of(context).pop(false),
-              child: Text('Solo este dispositivo'),
+              child: const Text('Solo este dispositivo'),
             ),
             TextButton(
               onPressed: () => Navigator.of(context).pop(true),
-              child: Text('Todos los dispositivos'),
+              child: const Text('Todos los dispositivos'),
             ),
           ],
         );
@@ -430,7 +431,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       backgroundColor: const Color(0xFFF7F4F4),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.only(bottom: 110),
+          padding: const EdgeInsets.only(bottom: 110),
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
             child: Column(
@@ -507,7 +508,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFF8A67C8).withOpacity(0.3),
+              color: const Color(0xFF8A67C8).withValues(alpha: 0.3),
               blurRadius: size.width < 600 ? 15 : 25,
               offset: const Offset(0, 8),
             ),
@@ -563,11 +564,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     // Si NO es company_id 8, no mostrar el badge
     if (companyId != 8) {
-      return SizedBox.shrink();
+      return const SizedBox.shrink();
     }
 
     if (_loadingSubscription) {
-      return SizedBox(
+      return const SizedBox(
         height: 30,
         width: 30,
         child: CircularProgressIndicator(strokeWidth: 2),
@@ -583,7 +584,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
       decoration: BoxDecoration(
         gradient: isPro
-            ? LinearGradient(
+            ? const LinearGradient(
                 colors: [Color(0xFF52178F), Color(0xFFA88BC7)],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -594,9 +595,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         boxShadow: isPro
             ? [
                 BoxShadow(
-                  color: Color(0xFF8A67C8).withOpacity(0.3),
+                  color: const Color(0xFF8A67C8).withValues(alpha: 0.3),
                   blurRadius: 8,
-                  offset: Offset(0, 4),
+                  offset: const Offset(0, 4),
                 ),
               ]
             : null,
@@ -609,7 +610,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             color: Colors.white,
             size: size.width < 400 ? 16 : 18,
           ),
-          SizedBox(width: 6),
+          const SizedBox(width: 6),
           Text(
             isPro ? 'Funcy PRO' : 'Plan FREE',
             style: GoogleFonts.inter(
@@ -771,7 +772,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         boxShadow: size.width >= 600
             ? [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.08),
+                  color: Colors.black.withValues(alpha: 0.08),
                   blurRadius: 8,
                   offset: const Offset(0, 2),
                 ),
@@ -832,11 +833,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     // Si NO es company_id 8, no mostrar el botón
     if (companyId != 8) {
-      return SizedBox.shrink();
+      return const SizedBox.shrink();
     }
 
     if (_loadingSubscription) {
-      return SizedBox(
+      return const SizedBox(
         height: 50,
         child: Center(child: CircularProgressIndicator()),
       );
@@ -865,7 +866,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             : () async {
                 final result = await Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SubscriptionScreen()),
+                  MaterialPageRoute(builder: (context) => const SubscriptionScreen()),
                 );
                 if (result == true) {
                   await _loadSubscriptionData();
@@ -883,7 +884,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
         style: ElevatedButton.styleFrom(
-          backgroundColor: isPro ? Colors.red : Color(0xFF4320AD),
+          backgroundColor: isPro ? Colors.red : const Color(0xFF4320AD),
           foregroundColor: Colors.white,
           padding: EdgeInsets.symmetric(
             horizontal: size.width < 400 ? 24 : 32,
@@ -938,7 +939,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
           elevation: size.width >= 600 ? 2 : 0,
-          shadowColor: size.width >= 600 ? Colors.black.withOpacity(0.1) : null,
+          shadowColor: size.width >= 600 ? Colors.black.withValues(alpha: 0.1) : null,
         ),
         child: Text(
           'Cerrar sesión',
@@ -967,7 +968,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     // Si no ha completado el exit test, no mostrar el botón del certificado
     if (!widget.isDay21Completed) {
-      return SizedBox.shrink();
+      return const SizedBox.shrink();
     }
 
     return Container(
@@ -976,7 +977,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         maxWidth: isDesktop ? 400 : size.width * 0.8,
       ),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           colors: [Color(0xFF6D4BD8), Color(0xFF5027D0)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -984,9 +985,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         borderRadius: BorderRadius.circular(40),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFF6D4BD8).withOpacity(0.3),
+            color: const Color(0xFF6D4BD8).withValues(alpha: 0.3),
             blurRadius: 12,
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
           ),
         ],
       ),

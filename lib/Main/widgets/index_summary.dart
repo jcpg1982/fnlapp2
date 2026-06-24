@@ -5,10 +5,10 @@ class IndexSummaryScreen extends StatelessWidget {
   final VoidCallback onBack; // Agregar callback para retroceder
 
   const IndexSummaryScreen({
-    Key? key,
+    super.key,
     required this.onFinalize,
     required this.onBack, // Requerir el callback
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +85,7 @@ class IndexSummaryScreen extends StatelessWidget {
                                   fontFamily: 'Inter',
                                   height: 1.6,
                                 ),
-                                children: [
+                                children: const [
                                   TextSpan(
                                     text: 'El equilibrio entre tu trabajo y tu bienestar empieza por conocerte.\n',
                                     style: TextStyle(fontWeight: FontWeight.bold),

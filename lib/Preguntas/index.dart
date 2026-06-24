@@ -15,7 +15,7 @@ class IndexScreen extends StatefulWidget {
   final String username;
   final ApiService apiServiceWithToken;
 
-  IndexScreen({required this.username, required this.apiServiceWithToken});
+  const IndexScreen({super.key, required this.username, required this.apiServiceWithToken});
 
   @override
   _IndexScreenState createState() => _IndexScreenState();
@@ -65,12 +65,12 @@ class _IndexScreenState extends State<IndexScreen> {
   Future<void> _precacheImages() async {
     await Future.wait([
       precacheImage(
-        NetworkImage(
+        const NetworkImage(
             'https://funkyrecursos.s3.us-east-2.amazonaws.com/assets/funcy_seguridad.png'),
         context,
       ),
       precacheImage(
-        NetworkImage(
+        const NetworkImage(
             'https://funkyrecursos.s3.us-east-2.amazonaws.com/assets/funcy_espejo.png'),
         context,
       ),
@@ -94,7 +94,7 @@ class _IndexScreenState extends State<IndexScreen> {
       } else if (!testestresbool) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => TestEstresScreen()),
+          MaterialPageRoute(builder: (context) => const TestEstresScreen()),
         );
       } else {
         Navigator.pushReplacementNamed(context, '/home');
@@ -128,7 +128,7 @@ class _IndexScreenState extends State<IndexScreen> {
         return;
       }
 
-      final url = '${Config.apiUrl2}/users/accept-permisos';
+      const url = '${Config.apiUrl2}/users/accept-permisos';
       final response = await http.post(
         Uri.parse(url),
         headers: {
@@ -144,18 +144,18 @@ class _IndexScreenState extends State<IndexScreen> {
         await prefs.setBool('permisopoliticas', true);
 
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Permisos aceptados y actualizados.')),
+          const SnackBar(content: Text('Permisos aceptados y actualizados.')),
         );
       } else {
         print('Error al actualizar permisopoliticas: ${response.statusCode}');
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error al actualizar permisos.')),
+          const SnackBar(content: Text('Error al actualizar permisos.')),
         );
       }
     } catch (e) {
       print('Error: $e');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error al conectar con el servidor.')),
+        const SnackBar(content: Text('Error al conectar con el servidor.')),
       );
     }
   }
@@ -334,7 +334,7 @@ class _IndexScreenState extends State<IndexScreen> {
     if (currentQuestionIndex > 0) {
       setState(() {
         currentQuestionIndex--;
-        selectedOption = selectedAnswers[currentQuestionIndex] ?? null;
+        selectedOption = selectedAnswers[currentQuestionIndex];
       });
     }
   }
@@ -399,24 +399,24 @@ class _IndexScreenState extends State<IndexScreen> {
         }
 
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Respuestas guardadas exitosamente.')),
+          const SnackBar(content: Text('Respuestas guardadas exitosamente.')),
         );
 
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => TestEstresScreen(),
+            builder: (context) => const TestEstresScreen(),
           ),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error al guardar respuestas.')),
+          const SnackBar(content: Text('Error al guardar respuestas.')),
         );
       }
     } catch (e) {
       print('Error al enviar respuestas: $e');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error al enviar respuestas.')),
+        const SnackBar(content: Text('Error al enviar respuestas.')),
       );
     }
   }
@@ -499,7 +499,7 @@ class _IndexScreenState extends State<IndexScreen> {
                       style: TextStyle(
                         fontSize: titleFontSize,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF281368),
+                        color: const Color(0xFF281368),
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -523,7 +523,7 @@ class _IndexScreenState extends State<IndexScreen> {
                           text: 'Política de privacidad',
                           style: TextStyle(
                             fontSize: textFontSize,
-                            color: Color(0xFF5027D0),
+                            color: const Color(0xFF5027D0),
                             fontWeight: FontWeight.bold,
                           ),
                           recognizer: TapGestureRecognizer()
@@ -531,7 +531,7 @@ class _IndexScreenState extends State<IndexScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (_) => PoliticaPrivacidadScreen()),
+                                    builder: (_) => const PoliticaPrivacidadScreen()),
                               );
                             },
                         ),
@@ -543,7 +543,7 @@ class _IndexScreenState extends State<IndexScreen> {
                           text: 'Condiciones de uso',
                           style: TextStyle(
                             fontSize: textFontSize,
-                            color: Color(0xFF5027D0),
+                            color: const Color(0xFF5027D0),
                             fontWeight: FontWeight.bold,
                           ),
                           recognizer: TapGestureRecognizer()
@@ -551,7 +551,7 @@ class _IndexScreenState extends State<IndexScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (_) => CondicionesUsoScreen()),
+                                    builder: (_) => const CondicionesUsoScreen()),
                               );
                             },
                         ),
@@ -579,7 +579,7 @@ class _IndexScreenState extends State<IndexScreen> {
                           text: 'Política de privacidad',
                           style: TextStyle(
                             fontSize: textFontSize,
-                            color: Color(0xFF5027D0),
+                            color: const Color(0xFF5027D0),
                             fontWeight: FontWeight.bold,
                           ),
                           recognizer: TapGestureRecognizer()
@@ -587,7 +587,7 @@ class _IndexScreenState extends State<IndexScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (_) => PoliticaPrivacidadScreen()),
+                                    builder: (_) => const PoliticaPrivacidadScreen()),
                               );
                             },
                         ),
@@ -615,7 +615,7 @@ class _IndexScreenState extends State<IndexScreen> {
                           text: 'Política de privacidad',
                           style: TextStyle(
                             fontSize: textFontSize,
-                            color: Color(0xFF5027D0),
+                            color: const Color(0xFF5027D0),
                             fontWeight: FontWeight.bold,
                           ),
                           recognizer: TapGestureRecognizer()
@@ -623,7 +623,7 @@ class _IndexScreenState extends State<IndexScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (_) => PoliticaPrivacidadScreen()),
+                                    builder: (_) => const PoliticaPrivacidadScreen()),
                               );
                             },
                         ),
@@ -684,7 +684,7 @@ class _IndexScreenState extends State<IndexScreen> {
                             child: Text(
                               'Aceptar todo',
                               style: TextStyle(
-                                color: Color(0xFF6D4BD8),
+                                color: const Color(0xFF6D4BD8),
                                 fontSize: isTablet ? 20 : 18,
                                 fontFamily: 'Inter',
                                 fontWeight: FontWeight.bold,
@@ -769,11 +769,11 @@ class _IndexScreenState extends State<IndexScreen> {
                 width: checkboxSize,
                 height: checkboxSize,
                 decoration: BoxDecoration(
-                  color: isChecked ? Color(0xFF5027D0) : Colors.transparent,
+                  color: isChecked ? const Color(0xFF5027D0) : Colors.transparent,
                   borderRadius: BorderRadius.circular(4),
                   border: Border.all(
                     width: isTablet ? 2.0 : 1.78,
-                    color: isChecked ? Color(0xFF5027D0) : Colors.black,
+                    color: isChecked ? const Color(0xFF5027D0) : Colors.black,
                   ),
                 ),
                 child: isChecked
@@ -872,7 +872,7 @@ class _IndexScreenState extends State<IndexScreen> {
 
         if (currentCategoryQuestions == null ||
             currentCategoryQuestions.isEmpty) {
-          return Center(
+          return const Center(
             child: Text("No se encontraron preguntas para esta categoría."),
           );
         }
@@ -970,7 +970,7 @@ class _IndexScreenState extends State<IndexScreen> {
                         Text(
                           'Pregunta ${currentQuestionIndex + 1} de 6',
                           style: TextStyle(
-                            color: Color(0xFF212121),
+                            color: const Color(0xFF212121),
                             fontSize: questionCounterFontSize,
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w600,
@@ -983,7 +983,7 @@ class _IndexScreenState extends State<IndexScreen> {
                         Text(
                           preguntaTexto,
                           style: TextStyle(
-                            color: Color(0xFF5027D0),
+                            color: const Color(0xFF5027D0),
                             fontSize: titleFontSize,
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w600,
@@ -1131,7 +1131,7 @@ class _IndexScreenState extends State<IndexScreen> {
                       ? const Color(0x515027D0)
                       : Colors.transparent,
                   side: BorderSide(
-                    color: Color(0xFF6D4BD8),
+                    color: const Color(0xFF6D4BD8),
                     width: isTablet ? 3.0 : 2.0,
                   ),
                   shape: RoundedRectangleBorder(

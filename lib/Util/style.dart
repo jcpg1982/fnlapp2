@@ -9,17 +9,17 @@ class AppStyles {
     'rojoTransparent': Color.fromRGBO(208, 45, 35, 0.2),
   };
 
-  static final TextStyle btnLabel = TextStyle(
+  static const TextStyle btnLabel = TextStyle(
     fontFamily: 'MarlinGeo-Medium',
 
   );
 
-  static final EdgeInsetsGeometry mb4 = EdgeInsets.only(bottom: 4);
-  static final EdgeInsetsGeometry mb8 = EdgeInsets.only(bottom: 8);
+  static const EdgeInsetsGeometry mb4 = EdgeInsets.only(bottom: 4);
+  static const EdgeInsetsGeometry mb8 = EdgeInsets.only(bottom: 8);
 
   static final ButtonStyle btnDefault = ElevatedButton.styleFrom(
-    padding: EdgeInsets.symmetric(vertical: 6.5),
-    textStyle: TextStyle(
+    padding: const EdgeInsets.symmetric(vertical: 6.5),
+    textStyle: const TextStyle(
       fontSize: 14,
       fontFamily: 'MarlinGeo-Medium',
     ),
@@ -29,14 +29,14 @@ class AppStyles {
   );
 
   static final ButtonStyle btnLarge = ElevatedButton.styleFrom(
-    padding: EdgeInsets.symmetric(horizontal: 10),
+    padding: const EdgeInsets.symmetric(horizontal: 10),
   );
 
-  static final TextStyle familyRegular = TextStyle(
+  static const TextStyle familyRegular = TextStyle(
     fontFamily: 'MarlinGeo-Regular',
   );
 
-  static final TextStyle familyBold = TextStyle(
+  static const TextStyle familyBold = TextStyle(
     fontFamily: 'MarlinGeo-Bold',
   );
 

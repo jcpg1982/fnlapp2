@@ -6,7 +6,7 @@ class CustomNavigationBar extends StatelessWidget {
   final bool showExitTest;
   final bool isExitTestEnabled;
 
-  CustomNavigationBar({
+  const CustomNavigationBar({super.key, 
     required this.selectedIndex,
     required this.onItemTapped,
     required this.showExitTest,
@@ -16,17 +16,17 @@ class CustomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 30),
+      padding: const EdgeInsets.only(bottom: 30),
       child: Center(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           width: MediaQuery.of(context).size.width * 0.85,
           height: 70,
-          constraints: BoxConstraints(maxWidth: 400, minWidth: 280),
+          constraints: const BoxConstraints(maxWidth: 400, minWidth: 280),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(70),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Color(0x3D000000),
                 spreadRadius: 0,
@@ -70,7 +70,7 @@ class CustomNavigationBar extends StatelessWidget {
           ? null
           : () => onItemTapped(index),
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
         padding: EdgeInsets.symmetric(
           horizontal: horizontalPadding,
           vertical: isSelected ? 12 : 10,

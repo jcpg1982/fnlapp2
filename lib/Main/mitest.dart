@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 class MiTestScreen extends StatelessWidget {
   final NivelEstres nivelEstres;
 
-  const MiTestScreen({Key? key, required this.nivelEstres}) : super(key: key);
+  const MiTestScreen({super.key, required this.nivelEstres});
 
   // ---- helpers de mapeo (solo UI, no cambian tu lógica) ----
   String _tituloNivel(NivelEstres n) {
@@ -113,16 +113,16 @@ class MiTestScreen extends StatelessWidget {
     return Container(
       width: cardWidth,
       padding: EdgeInsets.all(size.width < 400 ? 12 : 16),
-      decoration: ShapeDecoration(
-        color: const Color(0xFFEAE5F9),
-        shape: const RoundedRectangleBorder(
+      decoration: const ShapeDecoration(
+        color: Color(0xFFEAE5F9),
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(10),
             bottomLeft: Radius.circular(10),
             bottomRight: Radius.circular(10),
           ),
         ),
-        shadows: const [
+        shadows: [
           BoxShadow(
             color: Color(0x28000000),
             blurRadius: 8,
@@ -241,7 +241,7 @@ class MiTestScreen extends StatelessWidget {
                 SizedBox(height: size.height * 0.03),
 
                 // Mascota más grande y responsiva
-                Container(
+                SizedBox(
                   width: double.infinity,
                   height: math.max(imageSize + 60, size.height * 0.5),
                   // Contenedor más alto
@@ -255,7 +255,7 @@ class MiTestScreen extends StatelessWidget {
                         fit: BoxFit.contain,
                         loadingBuilder: (context, child, loadingProgress) {
                           if (loadingProgress == null) return child;
-                          return Container(
+                          return SizedBox(
                             width: imageSize,
                             height: imageSize,
                             child: Center(

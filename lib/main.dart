@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:fnlapp/Login/login.dart';
 import 'package:fnlapp/Login/register.dart';
 import 'package:fnlapp/Preguntas/index.dart';
-import 'package:fnlapp/Main/cargarprograma.dart';
 import 'package:fnlapp/Main/home.dart';
 import '../Util/api_service.dart';
 import 'package:fnlapp/SplashScreen/splashscreen.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
-import 'package:flutter/foundation.dart';
 import 'dart:io';
 import 'SplashScreen/welcome_screen.dart';
 
@@ -45,9 +43,9 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashScreen(),
         '/welcome': (context) => const WelcomeScreen(),
-        '/login': (context) => LoginScreen(),
-        '/register': (context) => RegisterScreen(),
-        '/home': (context) => HomeScreen(),
+        '/login': (context) => const LoginScreen(),
+        '/register': (context) => const RegisterScreen(),
+        '/home': (context) => const HomeScreen(),
         // IndexScreen necesita parámetros, así que lo manejamos de esta forma
         '/index': (context) => IndexScreen(
           username: 'username', // Este dato debería venir de SharedPreferences

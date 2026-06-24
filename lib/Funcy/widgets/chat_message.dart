@@ -10,13 +10,13 @@ class ChatMessage extends StatefulWidget {
   final int userId;
   final int userType;
 
-  ChatMessage({
-    Key? key,
+  const ChatMessage({
+    super.key,
     required this.message,
     required this.time,
     required this.userId,
     required this.userType,
-  }) : super(key: key);
+  });
 
   @override
   _ChatMessageState createState() => _ChatMessageState();
@@ -79,7 +79,7 @@ class _ChatMessageState extends State<ChatMessage> {
         final String url = match.group(1) ?? '';
         spans.add(TextSpan(
           text: url,
-          style: TextStyle(color: Colors.blue, decoration: TextDecoration.underline),
+          style: const TextStyle(color: Colors.blue, decoration: TextDecoration.underline),
           recognizer: TapGestureRecognizer()
             ..onTap = () async {
               if (await canLaunch(url)) {
@@ -127,7 +127,7 @@ class _ChatMessageState extends State<ChatMessage> {
         // Para mensajes del bot (userType == 1)
         if (widget.userType == 1)
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -144,16 +144,16 @@ class _ChatMessageState extends State<ChatMessage> {
                     ),
                   ),
                 ),
-                SizedBox(width: 8.0),
+                const SizedBox(width: 8.0),
                 // Burbuja del mensaje
                 Expanded(
                   child: Container(
-                    margin: EdgeInsets.only(right: 80.0),
-                    padding: EdgeInsets.all(10.0),
+                    margin: const EdgeInsets.only(right: 80.0),
+                    padding: const EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
-                      color: Color(0xFFEAE5F9),
+                      color: const Color(0xFFEAE5F9),
                       borderRadius: BorderRadius.circular(10.0),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: Color(0x28000000),
                           blurRadius: 8,
@@ -174,13 +174,13 @@ class _ChatMessageState extends State<ChatMessage> {
                                   height: 120,
                                   fit: BoxFit.cover,
                                 ),
-                                SizedBox(height: 4.0),
+                                const SizedBox(height: 4.0),
                               ],
                             ),
                           RichText(
                             text: TextSpan(
                               children: _buildTextSpans(widget.message),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16.0,
                                 fontFamily: 'Inter',
                                 fontWeight: FontWeight.w500,
@@ -188,20 +188,20 @@ class _ChatMessageState extends State<ChatMessage> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 8.0),
+                          const SizedBox(height: 8.0),
                           //Linea Separadora
                           Container(
                             height: 1.0,
                             width: double.infinity,
-                            color: Color(0x99212121),
+                            color: const Color(0x99212121),
                           ),
-                          SizedBox(height: 4.0),
+                          const SizedBox(height: 4.0),
                           //Iconos de Copiar y Reproducir
                           Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               IconButton(
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.copy_rounded,
                                   size: 20.0,
                                   color: Color(0xFF351A8B),
@@ -210,7 +210,7 @@ class _ChatMessageState extends State<ChatMessage> {
                                   // Copiar texto al portapapeles
                                   Clipboard.setData(ClipboardData(text: widget.message));
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text('Texto copiado')),
+                                    const SnackBar(content: Text('Texto copiado')),
                                   );
                                 },
                               ),
@@ -218,7 +218,7 @@ class _ChatMessageState extends State<ChatMessage> {
                                 icon: Icon(
                                   isPlaying ? Icons.volume_off_outlined : Icons.volume_up_outlined,
                                   size: 20.0,
-                                  color: Color(0xFF351A8B),
+                                  color: const Color(0xFF351A8B),
                                 ),
                                 onPressed: _speakMessage,
                               ),
@@ -237,15 +237,15 @@ class _ChatMessageState extends State<ChatMessage> {
           Align(
             alignment: Alignment.centerRight,
             child: Container(
-              margin: EdgeInsets.only(
+              margin: const EdgeInsets.only(
                 top: 4.0,
                 bottom: 4.0,
                 left: 80.0,
                 right: 50.0,
               ),
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
-                color: Color(0xFF8A6FE0),
+                color: const Color(0xFF8A6FE0),
                 borderRadius: BorderRadius.circular(10.0),
               ),
               child: Column(
@@ -260,13 +260,13 @@ class _ChatMessageState extends State<ChatMessage> {
                             height: 120,
                             fit: BoxFit.cover,
                           ),
-                          SizedBox(height: 4.0),
+                          const SizedBox(height: 4.0),
                         ],
                       ),
                     RichText(
                       text: TextSpan(
                         children: _buildTextSpans(widget.message),
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16.0,
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.w500,
@@ -291,7 +291,7 @@ class _ChatMessageState extends State<ChatMessage> {
             alignment: widget.userType != 1 ? Alignment.centerRight : Alignment.centerLeft,
             child: Text(
               widget.time,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 12.0,
                 fontWeight: FontWeight.w500,
                 color: Color(0xB2212121),

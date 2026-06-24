@@ -1,23 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fnlapp/config.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:fnlapp/Funcy/screens/splash_screen.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:fnlapp/SharedPreferences/sharedpreference.dart';
 import 'dart:math' as math;
 import '../../Funcy/screens/chat_screen.dart';
-import 'package:intl/intl.dart';
 
 class ChatWidget extends StatelessWidget {
   final int userId;
   final String username;
   final Function(bool) onChatToggle;
 
-  ChatWidget(
-      {required this.userId,
+  const ChatWidget(
+      {super.key, required this.userId,
       required this.username,
       required this.onChatToggle});
 
@@ -166,19 +158,15 @@ class ChatWidget extends StatelessWidget {
   }
 
   Future<void> _startChat(BuildContext context) async {
-    if (userId != null) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => ChatScreen(
-              userId: userId,
-              username: username,
-            )
-        ),
-      );
-    } else {
-      print("Error: userId no definido");
-    }
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => ChatScreen(
+            userId: userId,
+            username: username,
+          )
+      ),
+    );
   }
 
 }

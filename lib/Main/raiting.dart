@@ -7,7 +7,7 @@ class RaitingScreen extends StatefulWidget {
   final String username; // Nombre de usuario pasado a la pantalla
   final ApiService apiServiceWithToken; // Servicio de API con token autenticado
 
-  RaitingScreen({
+  const RaitingScreen({super.key, 
     required this.username, // Parámetros obligatorios
     required this.apiServiceWithToken,
   });
@@ -33,12 +33,12 @@ class _RaitingScreenState extends State<RaitingScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min, // Ajusta el tamaño de la columna al contenido
           children: [
-            Icon(
+            const Icon(
               Icons.speed, // Ícono de velocidad
               size: 75.0, // Tamaño del ícono
               color: Color(0xFF5027D0), // Color del ícono
             ),
-            SizedBox(height: 20), // Espacio entre el ícono y el texto
+            const SizedBox(height: 20), // Espacio entre el ícono y el texto
             Text(
               'Test de Salida', // Texto principal
               style: GoogleFonts.poppins(
@@ -47,7 +47,7 @@ class _RaitingScreenState extends State<RaitingScreen> {
                 fontWeight: FontWeight.bold, // Grosor del texto
               ),
             ),
-            SizedBox(height: 20), // Espacio entre el texto y el siguiente elemento
+            const SizedBox(height: 20), // Espacio entre el texto y el siguiente elemento
             Row(
               mainAxisAlignment: MainAxisAlignment.center, // Centra el Row horizontalmente
               crossAxisAlignment: CrossAxisAlignment.center, // Alinea el contenido del Row en el centro
@@ -60,7 +60,7 @@ class _RaitingScreenState extends State<RaitingScreen> {
                         fontSize: 18.0, // Tamaño del texto en RichText
                         color: Colors.black, // Color del texto
                       ),
-                      children: [
+                      children: const [
                         TextSpan(
                           text: 'Ya completaste los 21 días del programa personalizado por lo que es momento que realices tu ',
                         ),
@@ -86,14 +86,14 @@ class _RaitingScreenState extends State<RaitingScreen> {
                 onPressed: () {
                   // Acción al presionar el botón (actualmente vacío)
                 },
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white, // Color del texto del botón
+                  backgroundColor: const Color(0xFF5027D0), // Color de fondo del botón
+                  minimumSize: const Size(double.infinity, 50), // Asegura que el botón ocupe todo el ancho disponible
+                ),
                 child: Text(
                   'Empezar Test',
                   style: GoogleFonts.poppins(), // Estilo del texto en el botón
-                ),
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white, // Color del texto del botón
-                  backgroundColor: Color(0xFF5027D0), // Color de fondo del botón
-                  minimumSize: Size(double.infinity, 50), // Asegura que el botón ocupe todo el ancho disponible
                 ),
               ),
             ),

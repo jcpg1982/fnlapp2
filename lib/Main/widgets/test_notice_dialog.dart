@@ -7,16 +7,16 @@ class TestNoticeDialog extends StatelessWidget {
   final VoidCallback? onBack;
 
   const TestNoticeDialog({
-    Key? key,
+    super.key,
     required this.notice,
     required this.onContinue,
     this.onBack,
-  }) : super(key: key);
+  });
 
   Widget _buildDescription(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final fontSize = screenWidth * 0.060;
-    final lineHeight = 1.4;
+    const lineHeight = 1.4;
 
     switch (notice.afterQuestion) {
       case 6:
@@ -27,7 +27,7 @@ class TestNoticeDialog extends StatelessWidget {
             Text(
               'No estás solo.',
               style: TextStyle(
-                color: Color(0xFF5027D0),
+                color: const Color(0xFF5027D0),
                 fontSize: fontSize,
                 fontFamily: 'Inter',
                 fontWeight: FontWeight.w700,
@@ -76,7 +76,7 @@ class TestNoticeDialog extends StatelessWidget {
               TextSpan(
                 text: 'Más del 70%',
                 style: TextStyle(
-                  color: Color(0xFF5027D0),
+                  color: const Color(0xFF5027D0),
                   fontSize: fontSize,
                   fontFamily: 'Inter',
                   fontWeight: FontWeight.w700,
@@ -151,7 +151,7 @@ class TestNoticeDialog extends StatelessWidget {
                   TextSpan(
                     text: 'Sigue adelante.',
                     style: TextStyle(
-                      color: Color(0xFF5027D0),
+                      color: const Color(0xFF5027D0),
                       fontSize: fontSize,
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w700,
@@ -264,7 +264,7 @@ class TestNoticeDialog extends StatelessWidget {
                       padding: EdgeInsets.all(screenWidth * 0.02),
                       child: Icon(
                         Icons.arrow_back_ios,
-                        color: Color(0xFF4320AD),
+                        color: const Color(0xFF4320AD),
                         size: screenWidth * 0.06,
                       ),
                     ),
@@ -285,7 +285,7 @@ class TestNoticeDialog extends StatelessWidget {
                               notice.title!,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                color: Color(0xFF4320AD),
+                                color: const Color(0xFF4320AD),
                                 fontSize: titleFontSize,
                                 fontFamily: 'Inter',
                                 fontWeight: FontWeight.w700,
@@ -326,7 +326,7 @@ class TestNoticeDialog extends StatelessWidget {
                                   TextSpan(
                                     text: 'Funcy',
                                     style: TextStyle(
-                                      color: Color(0xFF5027D0),
+                                      color: const Color(0xFF5027D0),
                                       fontSize: screenWidth * 0.060,
                                       fontFamily: 'Inter',
                                       fontWeight: FontWeight.w700,
@@ -354,7 +354,7 @@ class TestNoticeDialog extends StatelessWidget {
                                   notice.title!,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    color: Color(0xFF4320AD),
+                                    color: const Color(0xFF4320AD),
                                     fontSize: titleFontSize,
                                     fontFamily: 'Inter',
                                     fontWeight: FontWeight.w700,
